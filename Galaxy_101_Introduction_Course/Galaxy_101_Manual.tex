@@ -141,8 +141,24 @@ chr22	16287253	16287885	uc010gqp.2_cds_10_0_chr22_16287254_r	0	-	chr22	16287648	
 $ \\ $
 Let's take a look at this dataset. The first six columns correspond to exons. The last six correspond to SNPs. You can see that exon with ID \verb|uc002zlj.1_cds_8_0_chr22_16287254_r| contains three SNPs with IDs \verb|rs199952431|, \verb|rs200073113| and \verb|rs201840700|.
 \subsection{Counting the number of SNPs per exon}
-We've just seen that exon \verb|uc002zlj.1_cds_8_0_chr22_16287254_r| is repeated three times in the above dataset. Thus we can easily compute the number of SNPs per exon by simply counting the number of repetitions of name for each exon. This can be easily done with the ``Group'' tool:
+We've just seen that exon \verb|uc002zlj.1_cds_8_0_chr22_16287254_r| is repeated three times in the above dataset. Thus we can easily compute the number of SNPs per exon by simply counting the number of repetitions of name for each exon. This can be easily done with the ``Group'' tool:\\
 \includegraphics[width=\textwidth]{figures/101_13}\\
+Click \textbf{Execute} to do the grouping. Your history will look something like this:\\
+\includegraphics[scale=0.65]{figures/101_14}\\
+If you look at the above image you will see that the result of grouping (dataset \#4) contains two columns. The first column contains the exon names while the second contains the number of times this name has been repeated in dataset \#3 (i.e. number of SNPs within that exon).
+\subsection{Sorting exons by SNP count}
+To see which exon has the highest number of SNPs we can simply sort dataset \#4 on the second column in descending order. This can be done with the ``Sort'' tool:\\
+\includegraphics[scale=0.65]{figures/101_15}\\
+This will generate the a history item in which you can now see that the highest number of SNPs per exon is ...:\\
+\includegraphics[scale=0.65]{figures/101_16}\\
+\subsection{ Selecting top five}
+To select the top five exons with the highest number of SNPs we will use the tool ``\underline{Select first} lines from a dataset''. Set the number to 5 and press \textbf{Execute} to produce a history item that will contain these five lines:\\
+\includegraphics[scale=0.65]{figures/101_17}\\
+\subsection{ Recovering exon info and displaying data in genome
+browsers}
+Now we know that in this dataset the five top exons contain between 16 and 30 SNPs, but what else can we learn about them? To know more we need to get back the positional information (genomic coordinates) of these exons.
+This information was lost at the grouping step and now all we have is just two columns. To get the genomic coordinates back we will match the names of exons in dataset \#6 (column 1) against names of the exons in the original dataset \#1 (column 4). This can be done with "Join, Subtract and Group -> Compare two Datasets" tool (note the settings of the tool in the middle pane):
+
 
 %\bibliographystyle{natbib}
 %\bibliographystyle{plainnat}
