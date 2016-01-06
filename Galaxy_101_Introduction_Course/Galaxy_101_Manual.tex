@@ -23,7 +23,6 @@
 \end{itemize}
 }
 
-
 \begin{document}
 \title{ \textit{\institute}\text{ }Galaxy Training: Introduction to Galaxy \\
 { \large This practical aims to familiarize you with the Galaxy user interface. It will teach you how to perform basic tasks such as uploading data, running tools, working with histories, creating workflows, and sharing data. } }
@@ -31,9 +30,13 @@
 \author{ \authors }
 \maketitle
 
+%\newpage
+%\tableofcontents
+%\newpage
+
 %\doublespacing
 
-\section{Introduction}
+\section*{Introduction}
 This manual is inspired by the Galaxy-101 pages available at \url{https://github.com/nekrut/galaxy/wiki/Galaxy101-1} and \url{https://usegalaxy.org/u/galaxyproject/p/galaxy-variant-101}.
 Due to the rapid development of Galaxy screenshots and results may be out of date. If you experience something like this, please report it as a bug at \url{https://github.com/ErasmusMC-Bioinformatics/galaxy-courses/issues}.
 
@@ -43,13 +46,13 @@ Due to the rapid development of Galaxy screenshots and results may be out of dat
 % - whether to use specific training accounts or register one
 % - a notice until when the server will be available or whether it will be accessible after the course
 % - funding related notices
-\section{Preparations}
-\subsection{Open Galaxy}
+\section*{Preparations}
+\subsection*{Open Galaxy}
 Please open a web browser and navigate to your assigned Galaxy server:
 
 \servers
 
-\subsection{Register for an account}
+\subsection*{Register for an account}
 In the top menu bar, go to User and then choose Register (fig. \ref{fig:registration}). After registration, click on Analyze data in the top menu to return to the main screen.
 
 \begin{figure}
@@ -59,7 +62,7 @@ In the top menu bar, go to User and then choose Register (fig. \ref{fig:registra
   \label{fig:registration}
 \end{figure}
 
-\subsection{Get started}
+\subsection*{Getting started}
 The time is there to play with Galaxy. The main screen consists of three parts, on the left is the list of available tools, on the right side
 is your history pane, showing the analysis you have performed so far, and in the middle you view your tools and data (fig. \ref{fig:organization_layout}).
 
@@ -69,6 +72,28 @@ is your history pane, showing the analysis you have performed so far, and in the
   \caption{\small{ The organization of Galaxy: on the left side the analysis modules like tools and workflows, in the middle page the data or the controls of the analysis modules, and on the right side the history items. }}
   \label{fig:organization_layout}
 \end{figure}
+
+\section*{Galaxy 101: The first thing you should try}
+In this very simple example we will introduce you to bare basics of Galaxy:
+\begin{itemize}
+	\item Getting data from UCSC
+	\item Performing simple data manipulation
+	\item Understanding Galaxy's Tool and History system
+	\item Creating and editing workflows
+	\item Applying workflows to your data
+\end{itemize}
+Suppose you get the following question: ``\textit{Mom (or Dad) ... Which coding exon has the highest number of single nucleotide polymorphisms on chromosome 22?}''. You think to yourself ``\textit{Wow! This is a simple question ... I know exactly where the data is (at UCSC) but how do I actually compute this?}'' The truth is, there is really no
+straightforward way of answering this question in a time frame comparable to the attention span of a 7-year-old. Well ... actually there is and it is called Galaxy. So let's try it...
+
+\section{Getting data from UCSC genome browser}
+
+First thing we will do is to obtain data from UCSC by clicking ``Get Data $\rightarrow$ UCSC Main'':\\
+\includegraphics[scale=0.65]{figures/101_01} \\
+You will see Galaxy's middle pane change to looks like this:\\
+\includegraphics[width=\textwidth]{figures/101_02} \\
+Make sure that your settings are exactly the same as shown on the screen (in particular, \textbf{assembly} should be set to \textit{Feb. 2009 (GRCh37/hg19}, \textbf{position} should be set to ``chr22'', \textbf{output format} should be set to ``BED - browser extensible data'', and ``Galaxy'' should be checked by Send output to option). Click get output and you will see the next screen:
+
+
 
 %\bibliographystyle{natbib}
 %\bibliographystyle{plainnat}
