@@ -128,9 +128,21 @@ Different servers will have this tool available under different sections. This a
 \textbf{Note}: if you scroll down on this page, you will find an explanation about the tool. Make sure your exons are first and SNPs are second and click \textbf{Execute}. You will get the third history item, changing color over time. When it is \textbf{gray}, it \textbf{is scheduled} for analysis. When it is \textbf{yellow}, it \textbf{is performing} the analysis and when it \textbf{is green}, the analysis \textbf{has completed}. \\
 \includegraphics[width=\textwidth]{figures/101_12}\\
 \textbf{General notice: when jobs are not finished (yellow or gray) ADDING MORE JOBS DOES NOT MAKE ANALYSIS GO QUICKER!!!}\\
-
-
-
+\\
+If you did everything correctly, the first lines of the data will be:
+{\scriptsize
+\begin{verbatim}
+chr22	16277747	16277885	uc002zlh.1_cds_6_0_chr22_16277748_r	0	-	chr22	16277851	16277852	rs200742649	0	+
+chr22	16277747	16277885	uc010gqp.2_cds_6_0_chr22_16277748_r	0	-	chr22	16277851	16277852	rs200742649	0	+
+chr22	16287253	16287885	uc010gqp.2_cds_10_0_chr22_16287254_r	0	-	chr22	16287338	16287339	rs199952431	0	+
+chr22	16287253	16287885	uc010gqp.2_cds_10_0_chr22_16287254_r	0	-	chr22	16287850	16287851	rs72485235	0	+
+chr22	16287253	16287885	uc010gqp.2_cds_10_0_chr22_16287254_r	0	-	chr22	16287648	16287649	rs201243560	0	+
+\end{verbatim}}
+$ \\ $
+Let's take a look at this dataset. The first six columns correspond to exons. The last six correspond to SNPs. You can see that exon with ID \verb|uc002zlj.1_cds_8_0_chr22_16287254_r| contains three SNPs with IDs \verb|rs199952431|, \verb|rs200073113| and \verb|rs201840700|.
+\subsection{Counting the number of SNPs per exon}
+We've just seen that exon \verb|uc002zlj.1_cds_8_0_chr22_16287254_r| is repeated three times in the above dataset. Thus we can easily compute the number of SNPs per exon by simply counting the number of repetitions of name for each exon. This can be easily done with the ``Group'' tool:
+\includegraphics[width=\textwidth]{figures/101_13}\\
 
 %\bibliographystyle{natbib}
 %\bibliographystyle{plainnat}
