@@ -1,5 +1,5 @@
-Galaxy_101_Manual.aux
-Galaxy_101_Manual.log
-Galaxy_101_Manual.out
-Galaxy_101_Manual.pdf
-Galaxy_101_Manual.synctex.gz
+*.aux
+*.log
+*.out
+*.pdf
+*.synctex.gz
