@@ -113,10 +113,22 @@ You need to make sure that \textbf{Whole Gene} is selected (``Whole Gene'' here 
 \includegraphics[width=\textwidth]{figures/101_08}\\
 Now we will rename the two history items to ``Exons" and ``SNPs" by clicking on the Pencil icon adjacent to each item. Also we will rename history to "Galaxy 101" (or whatever you want) by clicking on "Unnamed history" so everything looks like this:\\
 \includegraphics[scale=0.65]{figures/101_09}\\
-\textbf{NOTE}: If the import from UCSC takes too long or something else went wrong, the files can still be found as shared data library in Galaxy. Browse the following directories \textit{
+\textbf{Note}: If the import from UCSC takes too long or something else went wrong, the files can still be found as shared data library in Galaxy. Browse the following directories \textit{
 \datalibrarydir}
 , and select the files named ``SNPs'' and ``Exons'', choose ``Import to current history'' and click ``Go''. Click on ``Analyze Data'' on the top menu bar to return to your analysis. In more recent versions of Galaxy you only have to ``to History". Go back to Galaxy's main page by pressing ``Analyze Data'':
 \includegraphics[width=\textwidth]{figures/101_10}\\
+
+\newpage
+
+\section{Finding Exons with the highest number of SNPs}
+\subsection{Joining exons with SNPs}
+Let's remind ourselves that our objective was to find which exon contains the most SNPs. This first step in answering this question will be joining exons with SNPs (a fancy word for printing exons and SNPs that overlap side by side). This is done using the tool ``\underline{Join} the intervals of two datasets side-by-side''.
+Different servers will have this tool available under different sections. This accounts for all tools actually. Therefore it is recommended to search for a tool n the search bar in the left top. Once you have found it you can join the SNPs into the exons by selecting the following:\\
+\includegraphics[width=\textwidth]{figures/101_11}\\
+\textbf{Note}: if you scroll down on this page, you will find an explanation about the tool. Make sure your exons are first and SNPs are second and click \textbf{Execute}. You will get the third history item, changing color over time. When it is \textbf{gray}, it \textbf{is scheduled} for analysis. When it is \textbf{yellow}, it \textbf{is performing} the analysis and when it \textbf{is green}, the analysis \textbf{has completed}. \\
+\includegraphics[width=\textwidth]{figures/101_12}\\
+\textbf{General notice: when jobs are not finished (yellow or gray) ADDING MORE JOBS DOES NOT MAKE ANALYSIS GO QUICKER!!!}\\
+
 
 
 
