@@ -91,8 +91,21 @@ First thing we will do is to obtain data from UCSC by clicking ``Get Data $\righ
 \includegraphics[scale=0.65]{figures/101_01} \\
 You will see Galaxy's middle pane change to looks like this:\\
 \includegraphics[width=\textwidth]{figures/101_02} \\
-Make sure that your settings are exactly the same as shown on the screen (in particular, \textbf{assembly} should be set to \textit{Feb. 2009 (GRCh37/hg19}, \textbf{position} should be set to ``chr22'', \textbf{output format} should be set to ``BED - browser extensible data'', and ``Galaxy'' should be checked by Send output to option). Click get output and you will see the next screen:
+Make sure that your settings are exactly the same as shown on the screen (in particular, \textbf{assembly} should be set to \textit{Feb. 2009 (GRCh37/hg19}, \textbf{position} should be set to ``chr22'', \textbf{output format} should be set to ``BED - browser extensible data'', and ``Galaxy'' should be checked by Send output to option). Click get output and you will see the next screen:\\
+\includegraphics[width=\textwidth]{figures/101_03}\\
+Make sure \textbf{Create one BED record per} is set to ``Coding Exons'' and click \textbf{Send Query to Galaxy}. After this you will see your first History Item in Galaxy's right pane. It will go through gray (preparing) and yellow (running) states to become green:\\
+\includegraphics[width=\textwidth]{figures/101_04}\\
+To view the contents of the file, click on the eye icon.
 
+\subsection{Gettings SNPs}
+Now is the time to obtain SNP data. This is done almost exactly the same way. First thing we will do is to again click on ``Get Data $\rightarrow$ UCSC Main'':\\
+\includegraphics[scale=0.65]{figures/101_01}\\
+But now change group to ``Variation'' to obtain the SNPs. It may be that newer versions of \textbf{Common SNPs ($\ldots$)} are available. It is not a big deal to select another one (if the one in the figure below is not available anymore), but the results will be slightly different. After selection the page will look like this:\\
+\includegraphics[width=\textwidth]{figures/101_06}\\
+Then click \textbf{get output} to find a menu similar to this:\\
+\includegraphics[width=\textwidth]{figures/101_07}\\
+You need to make sure that \textbf{Whole Gene} is selected (``Whole Gene'' here really means ``Whole Feature'') and click \textbf{Send Query to Galaxy}. You will get your second item in the history:\\
+\includegraphics[width=\textwidth]{figures/101_08}\\
 
 
 %\bibliographystyle{natbib}
