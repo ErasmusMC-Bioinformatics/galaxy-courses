@@ -1,0 +1,68 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{hyperref}
+\bibliographystyle{plainnat}
+\usepackage{setspace}
+
+
+\def \institute {Institute / project name}
+\def \authors { Youri Hoogstrate, \institute }
+\def \servers {
+\begin{itemize}
+	\item \url{https://usegalaxy.org/}
+	\item \url{https://bioinf-galaxian.erasmusmc.nl/galaxy/}
+\end{itemize}
+}
+
+
+\begin{document}
+\title{ \textit{\institute}\text{ }Galaxy Training: Introduction to Galaxy \\
+{ \large This practical aims to familiarize you with the Galaxy user interface. It will teach you how to perform basic tasks such as uploading data, running tools, working with histories, creating workflows, and sharing data. } }
+
+\author{ \authors }
+\maketitle
+
+%\doublespacing
+
+\section{Introduction}
+This manual is inspired by the Galaxy-101 pages available at \url{https://github.com/nekrut/galaxy/wiki/Galaxy101-1} and \url{https://usegalaxy.org/u/galaxyproject/p/galaxy-variant-101}.
+Due to the rapid development of Galaxy screenshots and results may be out of date. If you experience something like this, please report it as a bug at \url{https://github.com/ErasmusMC-Bioinformatics/galaxy-courses/issues}.
+
+% @todo -> make 1 genereric Preparations page and include it
+% It should describe:
+% - server address(es)
+% - whether to use specific training accounts or register one
+% - a notice until when the server will be available or whether it will be accessible after the course
+% - funding related notices
+\section{Preparations}
+\subsection{Open Galaxy}
+Please open a web browser and navigate to your assigned Galaxy server:
+
+\servers
+
+\subsection{Register for an account}
+In the top menu bar, go to User and then choose Register. After registration, click on Analyze data in the top menu to return to the main screen.
+
+\begin{figure}
+  \center
+  \includegraphics[]{figures/register_icon_1}
+  \caption{\small{ The icons used in Galaxy to go to registration }}
+  \label{fig:registration}
+\end{figure}
+
+%\bibliographystyle{natbib}
+%\bibliographystyle{plainnat}
+
+\newpage
+
+\vspace{-1.5em}
+\bibliography{references}
+
+\end{document}
