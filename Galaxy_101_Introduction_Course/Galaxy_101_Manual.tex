@@ -151,13 +151,52 @@ To see which exon has the highest number of SNPs we can simply sort dataset \#4 
 \includegraphics[scale=0.65]{figures/101_15}\\
 This will generate the a history item in which you can now see that the highest number of SNPs per exon is ...:\\
 \includegraphics[scale=0.65]{figures/101_16}\\
-\subsection{ Selecting top five}
+\subsection{Selecting top five}
 To select the top five exons with the highest number of SNPs we will use the tool ``\underline{Select first} lines from a dataset''. Set the number to 5 and press \textbf{Execute} to produce a history item that will contain these five lines:\\
-\includegraphics[scale=0.65]{figures/101_17}\\
+\includegraphics[width=\textwidth]{figures/101_17}\\
 \subsection{ Recovering exon info and displaying data in genome
 browsers}
 Now we know that in this dataset the five top exons contain between 16 and 30 SNPs, but what else can we learn about them? To know more we need to get back the positional information (genomic coordinates) of these exons.
-This information was lost at the grouping step and now all we have is just two columns. To get the genomic coordinates back we will match the names of exons in dataset \#6 (column 1) against names of the exons in the original dataset \#1 (column 4). This can be done with "Join, Subtract and Group -> Compare two Datasets" tool (note the settings of the tool in the middle pane):
+This information was lost at the grouping step and now all we have is just two columns. To get the genomic coordinates back we will match the names of exons in dataset \#6 (column 1) against names of the exons in the original dataset \#1 (column 4). This can be done with ``Compare two Datasets'' tool (note the settings of the tool in the middle pane):\\
+\includegraphics[width=\textwidth]{figures/101_18}\\
+This will add a new dataset to the history:\\
+\includegraphics[scale=0.65]{figures/101_19}\\
+A good way to learn about these exons is to look at their genomic surrounding. This can be done by using genome browsers. 
+Therefore, first, we have to tell galaxy to which reference genome this data belongs (hg19) as follows:\\
+\includegraphics[width=\textwidth]{figures/101_20}\\
+To visualize the data in UCSC, click on ``display at UCSC main'' at the history item if you are at a public galaxy instance.
+When you are at at protected galaxy instance, download the file and upload it at UCSC as custom track (My Data $\rightarrow$ Custom Tracks). This will upload the data to UCSC as custom track (to
+see your regions look at ``User Supplied Track'' (track near the top)). In UCSC enter coordinates: \verb|chr22:32,102,914-32,118,375| to get a view that centres around the second top-5 exon like this:\\
+\includegraphics[width=\textwidth]{figures/101_21}\\
+\section{Understanding histories}
+In Galaxy your analyses live in histories such as your current one. Histories can be very large, you can have as many histories as you want, and all history behaviour is controlled by the \textbf{Options} button on the top of the History pane (gear symbol):\\
+\includegraphics[scale=0.65]{figures/101_22}\\
+If you create a new history, your current history does not disappear. If you would like to list all of your histories just choose Saved Histories and you will see a list of all your histories in the center pane:\\
+\includegraphics[scale=0.65]{figures/101_23}\\
+\section{Converting histories into workflows}
+\subsection{Extracting workflow}
+When you look carefully to your history, you can see that it contains \textbf{all} steps of our analysis, from the beginning to the end.
+By building this history we have actually built a complete record of our analysis with Galaxy preserving all parameter settings applied at every step. Wouldn't it be nice to just convert this history into a workflow that we'll be able to execute again and again? This can be done by clicking on Options (gear) button and selecting Extract Workflow option:\\
+\includegraphics[scale=0.65]{figures/101_24}\\
+The center pane will change as shown below and you will be able to choose which steps to include/exclude and how to name the newly created workflow. In the example it was named \textit{Find exons with highest number of SNPs}:\\
+\includegraphics[scale=0.55]{figures/101_25}\\
+Once you click \textbf{Create Workflow} you will get the following message: \textit{Workflow ``Find exons with highest number of SNPs''}. But where did it go? Click on Workflow link at the top of Galaxy interface and you will a list of all workflows with ``Find exons with highest number of SNPs'' listed at the top:\\
+\includegraphics[scale=0.55]{figures/101_26}\\
+\subsection{Opening workflow editor}
+If you click on a triangle adjacent to the workflow's name you will see the following dialogue:\\
+\includegraphics[scale=0.55]{figures/101_27}\\
+Click \textbf{Edit} and the workflow editor will launch. It will allow you to examine and change settings of this workflow as shown below. Note that the box corresponding to the "\textit{Select First}" tool is selected (highlighted with the blue border) and you can see parameters of this tool on the right pane. This is how you can view and change parameters of all tools involved in the workflow:\\
+\includegraphics[width=\textwidth]{figures/101_28}\\
+\subsection{Hiding intermediate steps}
+When workflow is executed, the user is usually interested in the final product and not in all intermediate steps. Output files can be hidden by mousing over the small asterisk in the lower right corner of every tool box:\\
+\includegraphics[scale=0.55]{figures/101_29}\\
+Yet there is a catch. In a newly created workflow all steps are hidden by default and default behavior of Galaxy is that if all steps of a given workflow are hidden, then nothing gets hidden in the history. This may be
+counter-intuitive, but this is done to decrease the amount of clicking if you do want to hide some steps. So if we want to hide all intermediate output files with the exception of the last one, we will click that asterisk
+in last step of the workflow:\\
+\includegraphics[scale=0.55]{figures/101_30}\\
+Once you do this the representation of the workflow in the bottom right corner of the editor will change with the last step becoming orange. This means that this is the only step which will generate an output file visible in the history:\\
+\includegraphics[scale=0.55]{figures/101_31}\\
+
 
 
 %\bibliographystyle{natbib}
