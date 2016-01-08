@@ -185,7 +185,7 @@ Once you click \textbf{Create Workflow} you will get the following message: \tex
 \subsection{Opening workflow editor}
 If you click on a triangle adjacent to the workflow's name you will see the following dialogue:\\
 \includegraphics[scale=0.55]{figures/101_27}\\
-Click \textbf{Edit} and the workflow editor will launch. It will allow you to examine and change settings of this workflow as shown below. Note that the box corresponding to the "\textit{Select First}" tool is selected (highlighted with the blue border) and you can see parameters of this tool on the right pane. This is how you can view and change parameters of all tools involved in the workflow:\\
+Click \textbf{Edit} and the workflow editor will launch. It will allow you to examine and change settings of this workflow as shown below. Note that the box corresponding to the ``\textit{Select First}'' tool is selected (highlighted with the blue border) and you can see parameters of this tool on the right pane. This is how you can view and change parameters of all tools involved in the workflow:\\
 \includegraphics[width=\textwidth]{figures/101_28}\\
 \subsection{Hiding intermediate steps}
 When workflow is executed, the user is usually interested in the final product and not in all intermediate steps. Output files can be hidden by mousing over the small asterisk in the lower right corner of every tool box:\\
@@ -207,13 +207,40 @@ Then click on the second input dataset and rename it to ``Features'' (this would
 Finally let's rename the workflow's output. For this click on the last dataset (``Compare two Queries''). Scroll down in the right pane, expand the ``Add Actions'' dialog and select ``Rename Dataset'':\\
 \includegraphics[scale=0.55]{figures/101_34}\\
 \subsection{Save! It is important...}
+\includegraphics[scale=0.55]{figures/101_35}
+\section{Run workflow on different data}
+Now that we have a workflow, let's use it on some different data. For example, let's find exons with the highest number of repetitive elements.
+\subsection{Create a new history}
+Before we start let's create a new history by clicking \textbf{Options} and selecting \textbf{Create New}. Let's get the chr22 exons from the data library again, as well as a list of repetitive elements (which were
+also obtained from UCSC table browser):\\
+\includegraphics[scale=0.55]{figures/101_36}
+\subsection{Start the Workflow}
+At this point you will have two items in your history: one with exons and one with repeats. First, click on the \textit{Workflow} link at the top of Galaxy interface, mouse over ``Find exons with highest number of SNPs'' (or whatever you named your workflow), click on the arrow and press \textbf{run}:
+\includegraphics[scale=0.55]{figures/101_37}\\
+The center pane will change to allow you launching the workflow. Select appropriate datasets for Exons and Repeats inputs as shown below, scroll down, and click Run workflow:\\
+\includegraphics[scale=0.55]{figures/101_38}\\
+Once the workflow has started you will initially be able to see all its steps (you may need to click the refresh button at the top of your history if the steps do not show up):\\
+\includegraphics[scale=0.55]{figures/101_39}\\
+Note that because all intermediate steps of the workflow were hidden, once it is finished you will only see final dataset \#7. If we want to view the intermediate files, we can view the hidden datasets by selecting ``\textbf{Include Hidden datasets}'' from the history options menu.
+\subsection{Share your work}
+I believe the most important part of galaxy comes at the end of an analysis. For the sake of reproducibility other researchers may want to work with your data as well. Galaxy allows to share, or publish, your created workflows, histories with other galaxy users, with other users or with the entire outside world. To share a history, click on the gear symbol in the history pane and select \textbf{Share or Publish}. On this page you can do 3 things:
+\begin{enumerate}
+	\item \textbf{Make accessible via Link.} This generates a link that you can give out to others. Anybody with this link will be able to view your history (even without a Galaxy account).
+	\item \textbf{Publish History.} This will not only create a link, but will also publish your history. (i.e. Your history will now appear
+ under Shared Data $\rightarrow$ Published Histories)
+	\item \textbf{Share with Individual Users.} This will share the history only with specific users on the Galaxy instance. Enter their email address (which they used to register their account in Galaxy)
+\end{enumerate}
 
-
+Challenge:
+\begin{itemize}
+	\item Share one of your histories with your neighbour, or publish it.
+	\item See if you can do the same with your workflow!
+\end{itemize}
 
 %\bibliographystyle{natbib}
 %\bibliographystyle{plainnat}
 
-\newpage
+%\newpage
 
 \vspace{-1.5em}
 \bibliography{references}
