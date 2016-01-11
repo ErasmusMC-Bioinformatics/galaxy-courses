@@ -50,9 +50,9 @@ To get some general alignment statistics, run the tool ``\textit{\underline{Flag
 \begin{itemize}
 	\item How many reads are multi-mapping?
 \end{itemize}
-For now we have only seen FastQ data and some summaries. To get an idea of what has been measured during the experiment, we can visualise the alignment. So, in the HISAT2 step we have been looking into hg19 where these sequences can be found in the reference genome, and this information is stored in those bam files. Start the built-in visualization Trackster at one of the alignments (make sure the dataset has \textbf{hg19} as database because we aligned to that):\\
+For now we have only seen FastQ data and some summaries. To get an idea of what has been measured during the experiment, we can visualise the alignment. So, in the HISAT2 step we have been looking into hg19 where these sequences can be found in the reference genome, and this information is stored in those bam files. Import from the Shared Data library (TraIT Galaxy Training Materials $\rightarrow$ TraIT Galaxy Training - 3: RNA-Seq Tuxedo Pipeline) the file ``\textit{ucsc\_refseq.gtf}'' into your history. Start the built-in visualization Trackster at one of the alignments (make sure the dataset has \textbf{hg19} as database because we aligned to that):\\
 \includegraphics[scale=0.55]{figures/alignment_03}\\
-Give it a name, press \textit{Create} and you show a yellow bar, indicating that the BAM file is being prepared. This means that the bam file is being convert into a file format that the browser can visualize. \includegraphics[width=\textwidth]{figures/alignment_04.png}\\
+Give it a name, press \textit{Create} and you will see a yellow bar, indicating that the bam file is being prepared. This means that the bam file is being convert into a file format that the browser can visualize. \includegraphics[width=\textwidth]{figures/alignment_04.png}\\
 When this job is done, and it looks like this, make sure you save it:\\
 \includegraphics[width=\textwidth]{figures/alignment_05.png}\\
 To add the other alignment, press the \textbf{[+]}-button:\\
@@ -60,14 +60,19 @@ To add the other alignment, press the \textbf{[+]}-button:\\
 Now select the other alignment and press \textit{Add} and save it again:\\
 \includegraphics[width=\textwidth]{figures/alignment_07.png}\\
 Remark that this is truncated data and you are supposed to see barely anything in here. Go to \textit{chr16}, to region \verb|chr16:15696870-15745667|.
+\begin{itemize}
+	\item Can you see where the introns and exons are located?
+\end{itemize}
+To help you answer this question, you can add ``\textit{ucsc\_refseq.gtf}'' that will visualize the exons and gene structure of a refseq gene annotation. It will only be visible if its database of the history item is set to hg19. Again, ensure this visualization is saved:\\
+\includegraphics[width=\textwidth]{figures/alignment_08.png}\\
+\begin{itemize}
+	\item Can you go to \verb|chr15:60688011-60688099|, and explain what is going on there?
+\end{itemize}
+In the last question you can clearly see that you can observe biological facts from alignments where you couldn't extract this from the plain fastq files. Because looking through these alignments is way to much work and prone to errors, we use these bam files for a variety of computer programs to estimate metrics. These metrics can be insert size, expression levels, indel ratio's, etc., that may be used to test different hypotheses.
 
+The insert size is the size between the mate pairs in the alignment. Since the fragments (original part of RNA) are size selected, this should also be reflect in the alignment. Leave Trackster and run the Picard tool: ``Insertion size metrics for paird data''.
 
-% The singletons
-%could be aligned separately in a single-end alignment, and could be added to the same alignment
-%later on (but this is out of the scope of this tutorial). Go to Tophat2 and select Pair-end library. Make
-%sure the reference genome is hg19. You have to run TWO alignments – one %for the quality trimmed
-%“treat_” samples and one for the quality trimmed “ctrl_” samples.
-
+- Ask question about insert size
 
 %\bibliographystyle{natbib}
 %\bibliographystyle{plainnat}
