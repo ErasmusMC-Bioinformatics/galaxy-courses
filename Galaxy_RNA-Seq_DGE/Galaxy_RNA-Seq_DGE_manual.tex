@@ -15,7 +15,7 @@
 
 \begin{document}
 \title{ \textit{\institute}\text{ }Galaxy Training: RNA-Seq DGE analysis \\
-{ \large This practical aims to familiarize you with the Galaxy RNA-Seq analysis. }}
+{ \large This practical aims to familiarize you with the Galaxy RNA-Seq analysis, the FastQ format and data collections (pairs).}}
 
 \author{ \authors }
 \maketitle
@@ -27,13 +27,33 @@
 %\doublespacing
 
 \section*{Introduction}
-This manual is inspired by the Galaxy-101 pages available at \url{https://github.com/nekrut/galaxy/wiki/Galaxy101-1} and \url{https://usegalaxy.org/u/galaxyproject/p/galaxy-variant-101}.
-Due to the rapid development of Galaxy screenshots and results may be out of date. If you experience something like this, please report it as a bug at \url{https://github.com/ErasmusMC-Bioinformatics/galaxy-courses/issues}.
+Due to the rapid development of Galaxy, screenshots and results may be out of date. If you experience something like this, please report it as a bug at \url{https://github.com/ErasmusMC-Bioinformatics/galaxy-courses/issues}.
 
 \input{../Preparations.tex}% Preparations should describe how to access which server
 
 % Module QC/QA:
 \input{Galaxy_RNA-Seq_DGE_manual_Module_QC.tex}
+
+% Module alignment:
+\section{RNA-Seq: alignment}
+To make more sense of the RNA-Seq data, we try to find the sequences back in the reference genome (mapping, aligning). The reference
+genome should represent the most common sequence of the chromosomes of the human population. Please read the first paragraph (3 scentences) of the following url: \url{http://en.wikipedia.org/wiki/Reference_genome}
+\begin{itemize}
+	\item On how many individuals is hg19 based?
+\end{itemize}
+For RNA-Seq we need specialized RNA aligners, able to cope with gaps that originate from splicing. For this exercise we will make use of a tool called RNA-STAR. There are quite some of these aligners around. We will make use the tool ``\textit{\underline{HISAT2} A fast and sensitive alignment program}''. Load the aligner, select the following settings and leave the rest on default, and run an alignment for \textit{miR-23b (clean)} and \textit{control sample (clean)}:\\
+\includegraphics[width=\textwidth]{figures/alignment_01.png}\\
+Please rename the \textit{HISAT2 on ...} to ``\textit{HISAT2 on miR-23b}'' and ``\textit{HISAT2 on control sample}''.
+
+
+
+
+
+% The singletons
+%could be aligned separately in a single-end alignment, and could be added to the same alignment
+%later on (but this is out of the scope of this tutorial). Go to Tophat2 and select Pair-end library. Make
+%sure the reference genome is hg19. You have to run TWO alignments – one %for the quality trimmed
+%“treat_” samples and one for the quality trimmed “ctrl_” samples.
 
 
 %\bibliographystyle{natbib}
