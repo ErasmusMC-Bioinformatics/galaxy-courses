@@ -6,6 +6,7 @@
 \usepackage[english]{babel}
 \usepackage[margin=0.85in]{geometry}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{natbib}
 \usepackage{hyperref}
 \bibliographystyle{plainnat}
@@ -135,12 +136,54 @@ Import the following files from data library \datalibrarydirrnaseqadvanced :
 	\item[] \verb|GSE51403_expression_matrix_5M_coverage.txt|
 	\item[] \verb|GSE51403_expression_matrix_10M_coverage.txt|
 	\item[] \verb|GSE51403_expression_matrix_full.txt|
+	\item[] \verb|GSE51403_expression_matrix_full_5x5.txt|
 	\item[] \verb|GSE51403_design_matrix_subsampled.txt|
 \end{itemize}
 Please take a look at the file GSE51403\_design\_matrix\_subsampled.txt.
 \begin{itemize}
 	\item Given that the first column lists the names of the samples and the second column the samples' corresponding condition, how many conditions does the experiment have?
 \end{itemize}
+\subsubsection{Subsampled datasets: 5M, 7+7}
+We have a two classes problem: the class itreated with estradiol is called “ E2”, and the
+other called “Control”. The design matrix provides the mapping from the RNAseq
+counts per sample to the phenotype class each is associated with. Take a look at the
+design matrix and see if you can find samples that belong to those classes.
+\begin{itemize}
+	\item [$\square$] Load ``\textit{\underline{edgeR: Differential Gene(Expression) Analysis} RNA-Seq gene expression analysis using edgeR (R package)}
+	\item [$\square$] Choose \textbf{Analysis type}: \textit{Multigroup test and/or complex designs with e.g. blocking}
+	\item [$\square$] Choose \textbf{Expression (read count) matrix}: {\scriptsize \verb| GSE51403_expression_matrix_5M_coverage.txt|}
+	\item [$\square$] Choose \textbf{Design matrix}: \verb|GSE51403_design_matrix.txt|
+	\item [$\square$] Define contrast: this is the more complicated part of the wrapper. It is defining the hypothesis we want to test. This is done via a mathematical formulation in a format described by a well known package \textit{limma}. For two class problems it is very simple: \textit{classNormal-classTreated} which in our case is: \textbf{Control-E2} (case sensitive!)
+	\item [$\square$] Set \textbf{Report differentially expressed genes} to \textit{Only significant (defined by FDR cutoff)} and ensure the cutoff is set to \verb|0.01|.
+	\item [$\square$] Don't select additional output files and leave the rest default.
+\end{itemize}
+It is always important to check whether what we did was correct. Take a look at the file ``\textit{edgeR DGE on 1: GSE51403\_design\_matrix.txt differentially expressed genes}''. If everything is correct, the gene \verb|GREB1| is located in the top of the file. Please check its corresponding gene cards page:\\
+\url{http://www.genecards.org/cgi-bin/carddisp.pl?gene=GREB1}\\
+
+\begin{itemize}
+	\item Can you find on the gene cards page a regulatory factor of the gene that relates
+to the E2 treatment?
+	\begin{itemize}
+		\item Hint: whxat was E2 again?
+	\end{itemize}
+	\item Can you find on the gene cards page an association with MCF-7 cells?
+	\begin{itemize}
+		\item Hint: what was MCF-7 for type of cell line again?
+	\end{itemize}
+\end{itemize}
+The answers to the questions should confirm that what we find with the DGE analysis is in agreement with the setup of the analysis. In the output file, each line represents one gene indicated by the gene symbol in the 2nd column. The P-value is a probability that represents the chance to find the expression values that belong to the gene given that
+they are from the same condition. The FDR is a multiple testing correction of the P-value and is usually used instead of the P-value. The lower this value, the less likely it is that the observed values are derived from the same condition. Thus, differentially expressed genes will have a low FDR and P-value. To distinguish between differences
+considered to be caused by chance and differences that are that significantly large that they are considered to be from different conditions, we make use of a cut-off, commonly set to < 0.01 or <0.05.
+
+In edgeR we have already selected to only return those genes with a FDR $\leq 0.01$. Hence, the number of lines in the history, minus 1 (header line) should give us the number of differentially expressed genes.
+\begin{itemize}
+	\item How many genes are significant differentially expressed between Control and E2? 
+	\begin{itemize}
+		\item[$\square$] Please fill this in into Table \ref{tab:dge_ad_01}.
+	\end{itemize}
+\end{itemize}
+
+
 
 %\bibliographystyle{natbib}
 %\bibliographystyle{plainnat}
