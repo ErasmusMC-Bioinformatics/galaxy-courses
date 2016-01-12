@@ -70,9 +70,41 @@ To help you answer this question, you can add ``\textit{ucsc\_refseq.gtf}'' that
 \end{itemize}
 In the last question you can clearly see that you can observe biological facts from alignments where you couldn't extract this from the plain fastq files. Because looking through these alignments is way to much work and prone to errors, we use these bam files for a variety of computer programs to estimate metrics. These metrics can be insert size, expression levels, indel ratio's, etc., that may be used to test different hypotheses.
 
-The insert size is the size between the mate pairs in the alignment. Since the fragments (original part of RNA) are size selected, this should also be reflect in the alignment. Leave Trackster and run the Picard tool: ``Insertion size metrics for paird data''.
+%The insert size is the size between the mate pairs in the alignment. Since the fragments (original part of RNA) are size selected, this should also be reflect in the alignment. Leave Trackster and run the Picard tool: ``Insertion size metrics for pairedd data''.
 
-- Ask question about insert size
+% @ todo
+%- Ask question about insert size
+
+\section{Expression analysis (basic)}
+There are several tools able to do differential gene expression analysis, like CuffDiff, EdgeR and DESeq2, all available for Galaxy.
+For this analysis we will start using the ``\textit{Tuxedo}'' pipeline, using CuffDiff.
+\\
+-- samtools header (use std samtools preferably)\\
+-- cuff stuff
+
+
+\section{Expression analysis advanced}
+\subsection{Estimating gene expression}
+For this practical we need a RNA-seq alignments we previously made in the basic expression analysis: ``\textit{HISAT2 on miR-23b.bam}''. If you did not do that practical, you can find it in the supplementary material: \\
+\datalibrarydirrnaseqadvanced $\rightarrow$ HISAT2\\
+Ensure that the file is annotated at reference genome hg19. To estimate expression in RNA-Seq, we can simply count the number of reads that are aligned to each gene from the list of candidate genes. Therefore you also need to import:
+\datalibrarydirrnaseqtuxedo $\rightarrow$ ucsc\_refseq.gtf\\
+This list is provided as a GTF/GFF file. There are a variety of tools available for counting reads. FeatureCounts is one of the fastest and it works directly using BAM files. If you search for
+``\textit{\underline{featureCounts} Measure gene expression in RNA-Seq experiments from SAM or BAM files.}'' in the Tools menu, you can find the wrapper by the name:\\
+\includegraphics[width=\textwidth]{figures/expression_01.png}\\
+Before we proceed, we would like to know whether the analysis has been performed correctly. Therefore we take a look at featureCounts’ output-summary file ``\textit{featureCounts on \ldots}'':
+\begin{itemize}
+	\item How many reads are \textit{Assigned}?
+	\item How many reads are \textit{UnAssigned (sum of all)}?
+\end{itemize}
+The flagstat exercise told us we had 18258 reads in total. This should match with the total number of reads in the summary file as well. If we want to look at a particular gene, we truncate the large table and only show the row with the gene of interest. To filter a tabular file we proceed with the following Galaxy tool: 
+\textit{\underline{Filter} data on any column using simple expressions}:\\
+\includegraphics[width=\textwidth]{figures/expression_02.png}\\
+\begin{itemize}
+	\item How many reads are aligned to ANXA2?
+\end{itemize}
+
+\subsection{Expression analysis - Low sequencing depth}
 
 %\bibliographystyle{natbib}
 %\bibliographystyle{plainnat}
