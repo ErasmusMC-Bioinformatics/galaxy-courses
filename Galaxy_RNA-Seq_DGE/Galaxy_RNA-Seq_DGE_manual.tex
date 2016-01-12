@@ -124,10 +124,10 @@ will be to determine the number of differentially expressed (DE) genes and add t
 Replicates & Seq. Depth & Significant DE genes \\
 \hline
 0          & 0          & 0\quad\quad \\
-7          & 5,000,000  & \verb|.......| ? \\
-7          & 10,000,000 & \verb|.......| ? \\
-7          & 30,000,000 & \verb|.......| ? \\
-5          & 30,000,000 & \verb|.......| ? \\
+7rep\_5M   & 5,000,000  & \verb|.......| ? \\
+7rep\_10M  & 10,000,000 & \verb|.......| ? \\
+7rep\_30M  & 30,000,000 & \verb|.......| ? \\
+5rep\_30M  & 30,000,000 & \verb|.......| ? \\
 \hline
 \end{tabular}
 \end{table}
@@ -183,7 +183,55 @@ In edgeR we have already selected to only return those genes with a FDR $\leq 0.
 	\end{itemize}
 \end{itemize}
 
+\subsubsection{Subsampled datasets: 10M, 7+7}
+In the previous analysis, the FASTQ files contained a total of 5.000.000 reads per sample. For the next analysis we will make use of twice that amount of raw data: 10M reads per sample, 7 samples per condition.
 
+\begin{itemize}
+	\item [$\square$] Re-run the previous job with the rerun icon
+	\item [$\square$] Replace \textbf{Expression (read count) matrix}: \textit{GSE51403\_expression\_matrix\_\underline{5M}\_coverage.txt} with \textit{GSE51403\_expression\_matrix\_\underline{10M}\_coverage.txt}
+	\item How many genes are significant differentially expressed between Control and E2? Is this more or less than when we used 5M reads?
+	\begin{itemize}
+		\item[$\square$] Please fill this in into Table \ref{tab:dge_ad_01}.
+	\end{itemize}
+\end{itemize}
+\subsubsection{Subsampled datasets: 30M, 7+7}
+In the previous analyses, the FASTQ files contained a total of 5.000.000 or 10.000.000 reads per sample. The full data set contains more or less 30.000.000 raw reads per sample.
+\begin{itemize}
+	\item [$\square$] Re-run the previous job with the rerun icon
+	\item [$\square$] Replace \textbf{Expression (read count) matrix}: \textit{GSE51403\_expression\_matrix\_\underline{5M}\_coverage.txt} with \textit{GSE51403\_expression\_matrix\_\underline{full}.txt}
+	\item How many genes are significant differentially expressed between Control and E2?
+	\begin{itemize}
+		\item[$\square$] Please fill this in into Table \ref{tab:dge_ad_01}.
+	\end{itemize}
+\end{itemize}
+\subsubsection{Subsampled datasets: 30M, 5+5}
+We have now ran three tests with 7+7 replicates with different sequencing depths. To see what the effects are of sample replication, we should run the same analysis with a different number of replicates. To modify expression matrices within Galaxy (both concatenating and removal) we can make use of the tool ``\textit{\underline{edgeR: Concatenate Expression Matrices} Create a full expression matrix}''. We have used all our replicates in the previous analyses and so we can reduce the number of replicates to 5+5 by simply picking a subset:\\
+\includegraphics[width=\textwidth]{figures/expression_03.png}\\
+This will create a truncated version of the expression matrix, only including the desired 5+5 replicates.
+\begin{itemize}
+	\item [$\square$] For convenience, rename the new expression matrix to:\\``\textit{GSE51403\_expression\_matrix\_full\_5+5\_replicates.txt}''.
+	\item [$\square$] Re-run the previous edgeR DGE job with the rerun icon
+	\item [$\square$] Replace \textbf{Expression (read count) matrix}: \textit{GSE51403\_expression\_matrix\_\underline{5M}\_coverage.txt} with ``\textit{GSE51403\_expression\_matrix\_full\_\underline{5+5\_replicates.txt}}''
+	\item [$\square$] \textbf{Enable} the optional output: ``\textit{MDS-plot (logFC-method)}''.
+	\item How many genes are significant differentially expressed between Control and E2?
+	\begin{itemize}
+		\item[$\square$] Please fill this in into Table \ref{tab:dge_ad_01}.
+	\end{itemize}	
+\end{itemize}
+Take a look at the MDS plot. If you want to understand all details about MDS plots you should do some research online. For now, what matters is that the distances between the samples in the plot should correspond more or less to the distances between the samples based on the expression of all (22.000) genes.
+\begin{itemize}
+	\item Do you see separation between the samples from E2 and Control?
+	\item Could you think of an application where it would be desired to see separation between classes?
+	\item Would you expect more or less differentially expressed genes if the experiment was done on individual patient samples instead of cell-line replicates?
+\end{itemize}
+Can you create a tab delimited file of Table 01, e.g. in notepad or Excel, and upload it as a 'tabular' file within Galaxy? If you are not able to create the file, you can pick it from the data library. Try to open it in Galaxy as Scatterplot (visualization on the history item) and discuss with other people about the impact of removing these 2 replicates on the statistical power:\\
+\includegraphics[width=\textwidth]{figures/expression_04.png}\\
+\textbf{You are finished!}
+\subsection{Bonus question}
+In case you can't get enough of it, go to the Shared Data bonus section and answer the following question:
+\begin{itemize}
+	\item To which classes do the Unknown samples belong? (Tip: MDS / heatmap)
+\end{itemize}
 
 %\bibliographystyle{natbib}
 %\bibliographystyle{plainnat}
