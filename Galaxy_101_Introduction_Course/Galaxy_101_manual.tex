@@ -15,7 +15,7 @@
 
 \begin{document}
 \title{ \textit{\institute}\text{ }Galaxy Training: Introduction to Galaxy \\
-{ \large This practical aims to familiarize you with the Galaxy user interface. It will teach you how to perform basic tasks such as uploading data, running tools, working with histories, creating workflows, and sharing data. } }
+{ \large This practical aims to familiarize a user with the Galaxy user interface. It will teach how to perform basic tasks such as uploading data, running tools, working with histories, creating workflows, and sharing data. } }
 
 \author{ \authors }
 \maketitle
@@ -33,8 +33,7 @@ Due to the rapid development of Galaxy screenshots and results may be out of dat
 \input{../Preparations.tex}% Preparations should describe how to access which server
 
 \subsection*{Getting started}
-The time is there to play with Galaxy. The main screen consists of three parts, on the left is the list of available tools, on the right side
-is your history pane, showing the analysis you have performed so far, and in the middle you view your tools and data (fig. \ref{fig:organization_layout}).
+The time is there to play with Galaxy. The main screen consists of three parts, on the left is the list of available tools, on the right side the history pane showing the analysis you have performed so far and in the middle panel the tools and data visualizations (fig. \ref{fig:organization_layout}).
 
 \begin{figure}
  \center
@@ -56,12 +55,11 @@ Suppose you get the following question: ``\textit{Mom (or Dad) ... Which coding 
 straightforward way of answering this question in a time frame comparable to the attention span of a 7-year-old. Well ... actually there is and it is called Galaxy. So let's try it...
 
 \section{Getting data from UCSC genome browser}
-
 First thing we will do is to obtain data from UCSC by clicking ``Get Data $\rightarrow$ UCSC Main'':\\
 \includegraphics[scale=0.65]{figures/101_01} \\
-You will see Galaxy's middle pane change to looks like this:\\
+You will see UCSC (in older versions of Galaxy it is embedded in the middle pane) which looks like this:\\
 \includegraphics[width=\textwidth]{figures/101_02} \\
-Make sure that your settings are exactly the same as shown on the screen (in particular, \textbf{assembly} should be set to \textit{Feb. 2009 (GRCh37/hg19}, \textbf{position} should be set to ``chr22'', \textbf{output format} should be set to ``BED - browser extensible data'', and ``Galaxy'' should be checked by Send output to option). Click get output and you will see the next screen:\\
+Make sure that your settings are exactly the same as shown on the screen (in particular, \textbf{assembly} should be set to \textit{Feb. 2009 (GRCh37/hg19}, \textbf{position} should be set to ``chr22'', \textbf{output format} should be set to ``BED - browser extensible data'', and ``Galaxy'' should be checked by Send output to option). Click \textit{get output} and you will see the next screen:\\
 \includegraphics[width=\textwidth]{figures/101_03}\\
 Make sure \textbf{Create one BED record per} is set to ``Coding Exons'' and click \textbf{Send Query to Galaxy}. After this you will see your first History Item in Galaxy's right pane. It will go through gray (preparing) and yellow (running) states to become green:\\
 \includegraphics[width=\textwidth]{figures/101_04}\\
@@ -79,16 +77,16 @@ You need to make sure that \textbf{Whole Gene} is selected (``Whole Gene'' here 
 Now we will rename the two history items to ``Exons" and ``SNPs" by clicking on the Pencil icon adjacent to each item. Also we will rename history to "Galaxy 101" (or whatever you want) by clicking on "Unnamed history" so everything looks like this:\\
 \includegraphics[scale=0.65]{figures/101_09}\\
 \textbf{Note}: If the import from UCSC takes too long or something else went wrong, the files can still be found as shared data library in Galaxy. Browse the following directories \textit{
-\datalibrarydir}
-, and select the files named ``SNPs'' and ``Exons'', choose ``Import to current history'' and click ``Go''. Click on ``Analyze Data'' on the top menu bar to return to your analysis. In more recent versions of Galaxy you only have to ``to History". Go back to Galaxy's main page by pressing ``Analyze Data'':
+\datalibrarydirintroduction}
+, and select the files named ``SNPs'' and ``Exons'', choose ``Import to current history'' and click ``Go''. In more recent versions of Galaxy you only have to click ``to History". Click on ``Analyze Data'' on the top menu bar to return to your analysis:\\
 \includegraphics[width=\textwidth]{figures/101_10}\\
 
-\newpage
+%\newpage
 
 \section{Finding Exons with the highest number of SNPs}
 \subsection{Joining exons with SNPs}
 Let's remind ourselves that our objective was to find which exon contains the most SNPs. This first step in answering this question will be joining exons with SNPs (a fancy word for printing exons and SNPs that overlap side by side). This is done using the tool ``\underline{Join} the intervals of two datasets side-by-side''.
-Different servers will have this tool available under different sections. This accounts for all tools actually. Therefore it is recommended to search for a tool n the search bar in the left top. Once you have found it you can join the SNPs into the exons by selecting the following:\\
+Different servers will have this tool available under different sections. This accounts for all tools actually. Therefore it is recommended to search for a tool in the search bar in the left top. Once you have found it you can join the SNPs into the exons by selecting the following:\\
 \includegraphics[width=\textwidth]{figures/101_11}\\
 \textbf{Note}: if you scroll down on this page, you will find an explanation about the tool. Make sure your exons are first and SNPs are second and click \textbf{Execute}. You will get the third history item, changing color over time. When it is \textbf{gray}, it \textbf{is scheduled} for analysis. When it is \textbf{yellow}, it \textbf{is performing} the analysis and when it \textbf{is green}, the analysis \textbf{has completed}. \\
 \includegraphics[width=\textwidth]{figures/101_12}\\
@@ -122,7 +120,7 @@ To select the top five exons with the highest number of SNPs we will use the too
 \subsection{ Recovering exon info and displaying data in genome
 browsers}
 Now we know that in this dataset the five top exons contain between 16 and 30 SNPs, but what else can we learn about them? To know more we need to get back the positional information (genomic coordinates) of these exons.
-This information was lost at the grouping step and now all we have is just two columns. To get the genomic coordinates back we will match the names of exons in dataset \#6 (column 1) against names of the exons in the original dataset \#1 (column 4). This can be done with ``Compare two Datasets'' tool (note the settings of the tool in the middle pane):\\
+This information was lost at the grouping step and now all we have is just two columns. To get the genomic coordinates back we will match the names of exons in dataset \#6 (column 1) against names of the exons in the original dataset \#1 (column 4). This can be done with ``\underline{Compare two Datasets} to find common or distinct rows'' tool using the following settings:\\
 \includegraphics[width=\textwidth]{figures/101_18}\\
 This will add a new dataset to the history:\\
 \includegraphics[scale=0.65]{figures/101_19}\\
@@ -145,7 +143,7 @@ By building this history we have actually built a complete record of our analysi
 \includegraphics[scale=0.65]{figures/101_24}\\
 The center pane will change as shown below and you will be able to choose which steps to include/exclude and how to name the newly created workflow. In the example it was named \textit{Find exons with highest number of SNPs}:\\
 \includegraphics[scale=0.55]{figures/101_25}\\
-Once you click \textbf{Create Workflow} you will get the following message: \textit{Workflow ``Find exons with highest number of SNPs''}. But where did it go? Click on Workflow link at the top of Galaxy interface and you will a list of all workflows with ``Find exons with highest number of SNPs'' listed at the top:\\
+Once you click \textbf{Create Workflow} you will get the following message: \textit{Workflow ``Find exons with highest number of SNPs''}. But where did it go? Click on \textbf{Workflow} at the top of Galaxy interface and you will a list of all workflows with ``Find exons with highest number of SNPs'' listed at the top:\\
 \includegraphics[scale=0.55]{figures/101_26}\\
 \subsection{Opening workflow editor}
 If you click on a triangle adjacent to the workflow's name you will see the following dialogue:\\
@@ -153,7 +151,7 @@ If you click on a triangle adjacent to the workflow's name you will see the foll
 Click \textbf{Edit} and the workflow editor will launch. It will allow you to examine and change settings of this workflow as shown below. Note that the box corresponding to the ``\textit{Select First}'' tool is selected (highlighted with the blue border) and you can see parameters of this tool on the right pane. This is how you can view and change parameters of all tools involved in the workflow:\\
 \includegraphics[width=\textwidth]{figures/101_28}\\
 \subsection{Hiding intermediate steps}
-When workflow is executed, the user is usually interested in the final product and not in all intermediate steps. Output files can be hidden by mousing over the small asterisk in the lower right corner of every tool box:\\
+When a workflow is executed, the user is usually primarily interested in the final product and not in all intermediate steps. Output files can be hidden by mousing over the small asterisk in the lower right corner of every tool box:\\
 \includegraphics[scale=0.55]{figures/101_29}\\
 Yet there is a catch. In a newly created workflow all steps are hidden by default and default behavior of Galaxy is that if all steps of a given workflow are hidden, then nothing gets hidden in the history. This may be
 counter-intuitive, but this is done to decrease the amount of clicking if you do want to hide some steps. So if we want to hide all intermediate output files with the exception of the last one, we will click that asterisk
@@ -162,12 +160,12 @@ in last step of the workflow:\\
 Once you do this the representation of the workflow in the bottom right corner of the editor will change with the last step becoming orange. This means that this is the only step which will generate an output file visible in the history:\\
 \includegraphics[scale=0.55]{figures/101_31}\\
 \subsection{Renaming inputs}
-Right now both inputs to the workflow look exactly the same. This is a problem as will be very confusing which input should be exons and which should be SNPs:\\
+Right now both inputs to the workflow look exactly the same, named ``Input dataset''. It will be very confusing which input should be exons and which should be SNPs:\\
 \includegraphics[scale=0.55]{figures/101_32}\\
 On the image above you will see that the top input dataset (the one with the blue border) connects to the \textit{Join} tool first, so it must correspond to the exon data. If you click on this box (in the image above it is
 already clicked on because it is outlined with the blue border) you will be able to rename the dataset in the right pane:\\
 \includegraphics[scale=0.55]{figures/101_33}\\
-Then click on the second input dataset and rename it to ``Features'' (this would make this workflow a bit more generic, which will be useful later in this tutorial):\\
+Then click on the second input dataset and rename it to ``Features''. This would make the workflow a bit more generic, which will be useful later in this tutorial.
 \subsection{Renaming inputs}
 Finally let's rename the workflow's output. For this click on the last dataset (``Compare two Queries''). Scroll down in the right pane, expand the ``Add Actions'' dialog and select ``Rename Dataset'':\\
 \includegraphics[scale=0.55]{figures/101_34}\\
@@ -188,7 +186,7 @@ Once the workflow has started you will initially be able to see all its steps (y
 \includegraphics[scale=0.55]{figures/101_39}\\
 Note that because all intermediate steps of the workflow were hidden, once it is finished you will only see final dataset \#7. If we want to view the intermediate files, we can view the hidden datasets by selecting ``\textbf{Include Hidden datasets}'' from the history options menu.
 \subsection{Share your work}
-I believe the most important part of galaxy comes at the end of an analysis. For the sake of reproducibility other researchers may want to work with your data as well. Galaxy allows to share, or publish, your created workflows, histories with other galaxy users, with other users or with the entire outside world. To share a history, click on the gear symbol in the history pane and select \textbf{Share or Publish}. On this page you can do 3 things:
+I believe the most important part of galaxy comes at the end of an analysis. When you have published striking findings it is important that other researchers are able to reproduce your in silico experiment. Galaxy allows to share, or publish, your created workflows, histories with other galaxy users, with other users or with the entire outside world. Thus, this allows you to share your software and data together. To share a history, click on the gear symbol in the history pane and select \textbf{Share or Publish}. On this page you can do 3 things:
 \begin{enumerate}
 	\item \textbf{Make accessible via Link.} This generates a link that you can give out to others. Anybody with this link will be able to view your history (even without a Galaxy account).
 	\item \textbf{Publish History.} This will not only create a link, but will also publish your history. (i.e. Your history will now appear
