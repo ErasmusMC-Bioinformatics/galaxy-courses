@@ -16,7 +16,7 @@ clean:
 tidy:
 	@rm -f *.log
 	@rm -f */*.log
-
+	
 	@rm -f *.out
 	@rm -f */*.out
 	
@@ -31,3 +31,9 @@ tidy:
 	
 	@rm -f *.dvi
 	@rm -f */*.dvi
+	
+	@rm -f *.nav
+	@rm -f */*.nav
+	
+	@rm -f *.snm
+	@rm -f */*.snm
