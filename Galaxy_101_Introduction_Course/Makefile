@@ -4,7 +4,10 @@ BIB = bibtex
 
 .PHONY: all
 
-all: Galaxy_101_manual.pdf
+all: Galaxy_101_manual.pdf Galaxy_101_presentation.pdf
 
 Galaxy_101_manual.pdf : Galaxy_101_manual.tex
 	$(TEX) Galaxy_101_manual.tex
+
+Galaxy_101_presentation.pdf : Galaxy_101_presentation.tex
+	$(TEX) Galaxy_101_presentation.tex
