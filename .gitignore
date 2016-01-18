@@ -7,3 +7,5 @@
 *.dvi
 *.nav
 *.snm
+*.bbl
+*.blg
