@@ -37,3 +37,9 @@ tidy:
 	
 	@rm -f *.snm
 	@rm -f */*.snm
+	
+	@rm -f *.blg
+	@rm -f */*.blg
+	
+	@rm -f *.bbl
+	@rm -f */*.bbl
