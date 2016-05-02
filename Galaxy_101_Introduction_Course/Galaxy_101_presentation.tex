@@ -7,7 +7,7 @@
 \usepackage{natbib}
 \usepackage[export]{adjustbox}
 
-\input{../configure.tex}% Configurations should be changed in this file
+\input{../configure_EMCmay2016.tex}% Configurations should be changed in this file
 
 
 \title[Galaxy 101]{Galaxy 101}
@@ -41,12 +41,12 @@
 	\titlepage % Print the title page as the first slide
 \end{frame}
 
-\begin{frame}
-	\frametitle{Overview} % Table of contents slide, comment this block out to remove it
-	\begin{scriptsize}
-		\tableofcontents
-	\end{scriptsize}
-\end{frame}
+%\begin{frame}
+%	\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+%	\begin{scriptsize}
+%		\tableofcontents
+%	\end{scriptsize}
+%\end{frame}
 
 \section{Introduction}
 
@@ -59,8 +59,8 @@
 		\item Provides graphical user interface for command-line programs
 		\item Focus on \textbf{reproducibility} and high throughput sequencing
 		\item User can build workflows graphically
-		\item Analysis steps performed on datasets stored in the History
-		\item Sharing of datasets and workflows amongst users
+		\item Analysis steps performed on datasets recorded in the \textbf{History}
+		\item \textbf{Sharing} of datasets and workflows amongst users
 		\item Free and open-source, large user/developer community
 		\item Easy to run your own Galaxy instance
 	\end{itemize}
@@ -81,9 +81,9 @@
 \begin{frame}
     \frametitle{Reproducibility in Galaxy}
     \begin{itemize}
-	    \item Every piece of data is read only
+	    \item Every piece of data is read-only
 	    \item Every tool has a version and modification dependent UID
-	    \item Every tool or analysis does some operation or function on data, which will generate a \textbf{new} piece of read only data
+	    \item Every tool or analysis does some operation or function on data, which will generate a \textbf{new} piece of read-only data
 	    \item Each operation is a \textbf{step} between two or more pieces of data forming a modular workflow
 	    \item Input data and the same workflow should produce the same outcome - also across different machines and OSes (\textbf{reproducible})
     	\begin{itemize}
@@ -99,6 +99,7 @@
     \frametitle{Getting data}
     \begin{itemize}
 	    \item Upload via browser
+	    \item Upload via FTP (for very large datasets)
 	    \item Let Galaxy pull from external sources
 	    \begin{itemize}
 	    	\item UCSC
@@ -122,8 +123,8 @@
 	\item Items coloured by status:
 		\begin{itemize}
 		\item Green: completed successfully
-		\item Yellow: running {\scriptsize \textbf{*do not spawn copies of job}}
-		\item Grey: queued {\scriptsize \textbf{*do not spawn copies of job}}
+		\item Yellow: running {\scriptsize \textbf{*}}
+		\item Grey: queued {\scriptsize \textbf{*}}
 		\item Red: completed with error
 		\end{itemize}
 	\item Buttons:
@@ -137,6 +138,9 @@
 		\includegraphics[width=\textwidth,right]{figures/101p_04a.png}
     \end{column}
   \end{columns}
+  \ \\
+  \ \\
+  {\scriptsize \textbf{*May take a while, be patient, grab a coffee, do not spawn duplicate jobs!}}
 \end{frame}
 
 \begin{frame}
@@ -255,7 +259,7 @@
   \end{columns}
 \end{frame}
 
-\input{../Preparations_presentation.tex}% Preparations should describe how to access which server
+\input{../Preparations_presentation_EMCmay2016.tex}% Preparations should describe how to access which server
 
 
 
