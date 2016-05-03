@@ -251,9 +251,9 @@ Downloading all these files to your local machine for viewing is a lot of hassle
    	- 2 images (of the EMC)
    	- 1 pdf file	(of the iReport paper)
    	- 1 tabular file	(or the programme for this course)
-  - Create an iReport. You are free to create whatever you like. Try to add at least 2 tabs, and include at least two content items on each tab. Remember, you can also add text as a content item.
+  - Create an iReport. You are free to create whatever you like. Upload your own files if you like. Try to add at least 2 tabs, and include at least two content items on each tab. Remember, you can also add text as a content item!
 
-Below are screenshots of a possible iReport. This example is also available as shared history, if you wish to see the parameter setting used here. `Shared Data → Published Histories → EMC Galaxy Training - 4: iReport`
+Below are screenshots of a possible iReport. This example is also available as shared history, if you wish to see the parameter setting used here. `Shared Data → Published Histories → EMC Training - My First iReport`
 
 ![](../figures/ireport_rollyourown_ss1.png)
 ![](../figures/ireport_rollyourown_ss2.png)
@@ -266,7 +266,7 @@ iReports can be a bit of work to make, but if you make them part of a workflow, 
 
 Many of the workflows we build result in an iReport to present the results to the user. An example of such a workflow was the one you started at the beginning of this session. Let's return to this now (switch histories)
 
-It is possible that your workflow will not have completed yet, if that is the case, import the example history belonging to this part of the practical and view that. `EMC Galaxy Training - 4: Integrative Workflow with iReport`
+It is possible that your workflow will not have completed yet, if that is the case, import the published history belonging to this part of the practical and view that. `EMC Training - Cancer Analysis Example Workflow result`
 
 Note that we added a few steps to filter some input files, to speed up the workflow enough to fit within this practical
 
