@@ -15,6 +15,9 @@
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
 
       .red { color: #fa0000; }
+      .green { color: #29bd29; }
+      .yellow { color: #deba2c; }
+      .gray { color: #666666; }
       .blue { color: #0000aa; }
       .small{font-size: 75%}
       .footnote {
@@ -35,12 +38,162 @@ class: center, middle
 .blue[
 ## EMC Galaxy Course
 
-Youri Hoogstrate, David van Zessen, Saskia Hiltemann,
-Andrew Stubbs
+Youri Hoogstrate, David van Zessen, Saskia Hiltemann, Andrew Stubbs
 ]
 
 ---
-class: center
+.center[
+## What is Galaxy?
+]
+Galaxy is an open, web-based platform for data intensive biomedical research.
+
+- Provides **user-friendly**, graphical interface for command-line tools
+- Focus on **reproducibility** and high throughput sequencing
+- User can **build workflows** graphically
+- Full **analysis recorded** in the history (inputs, tool versions, parameters)
+- **Sharing** of datasets and workflows amongst users
+- **Free** and **open-source**, large user/developer community
+- **Easy** to run your own Galaxy instance
+
+![:scale 50%; float: left](images/101p_01b.png)
+![:scale 40%; float: right](images/101p_01a.png)
+
+---
+.center[
+## What is Galaxy?
+![:scale 100%](images/101p_02.png)
+]
+
+---
+.center[
+## Getting Data
+]
+
+- Upload via browser
+
+- Upload via FTP (for very large datasets)
+
+- Let Galaxy pull from external sources
+  - UCSC
+  - SRA
+  - EBI
+  - BioMart
+  - ...
+  
+.center[ ![:scale 75%](images/101p_03.png) ]
+  
+---
+.center[
+## Histories
+]
+![:scale 20%; float: right](images/101p_04a.png)
+- Each history item represents a dataset
+
+- History items coloured by status:
+  - .gray[Gray:] job is queued.gray[*]
+  - .yellow[Yellow:] job is running.gray[*]
+  - .green[Green:] job has completed successfully
+  - .red[Red:] job has completed with error
+
+- Buttons:
+  - **Eye:** view contents of file
+  - **Pencil:** edit metadata (name, reference genome, file type, etc..)
+  - **Cross:** delete dataset from history 
+  
+  
+.footnote[ .gray[ ***May take a while, depending on the job and load on Galaxy, please be patient, grab a coffee, do not spawn duplicate jobs!** ] ]
+
+---
+.center[
+## Histories
+]
+![:scale 30%; float: right](images/101p_04b.png)
+- Expand history item for more options
+  - Download
+  - View metadata
+  - View output/error logs
+  - Visualisation options
+  - Rerun tool
+
+- Metadata is recorded:
+  - Tool versions
+  - Reference genome
+  - Full parameter settings
+  - Input files used
+
+---
+.center[
+## Visualizations
+]
+
+- Built-in interactive visualizations:
+  - Genome browser: **Trackster**
+  - Circos-like views with **Circster** ![:scale 30%; float: right](images/101p_06.png)
+  - Custom plots with Galaxy **Charts**
+  
+- Links to external display applications:
+  - UCSC
+  - IGV, IGB
+  - Ensemble
+  - ...
+  
+- Visualization tools:
+  - JBrowse
+  - iReport
+  - ...
+
+---
+.center[
+## Sharing
+]
+
+- **Data Libraries**  
+  ![:scale 30%; float: right](images/101p_07.png)
+  admins make data libraries available to share often-used data with all users. 
+  
+  
+- **Histories, workflows, visualisations**  
+  Users can share their work by
+  - Sharing with specific Galaxy users
+  - Making accessible via link. Anybody with this link can see your shared data
+  - Publishing on Galaxy (listed in shared data menu)
+
+- **Published Pages**  
+  write a wiki-like page describing your work to others
+  - Add text and images
+  - embed Histories
+  - embed Workflows
+
+---
+.center[
+## Sharing
+]
+
+**Published Pages**
+
+.center[ ![:scale 100%](images/101p_08.png) ]
+
+---
+.center[
+## Advanced Topics
+]
+
+- **Tool Shed.** The Galaxy App Store
+  ![:scale 20%; float: right](images/101p_09.jpg)
+  - 3000+ tools (C, Perl, Python, Bash, JS, etc. )
+  - Dependency management
+  - Data managers - build and manage reference data
+  
+- **API.** Programmatic (automated) access to Galaxy
+  - Example: embbed galaxy tools into other workflow systems
+  - Example: Pathology iontorrent sequencer connected to Galaxy. Whenever a new sample is sequenced, it is automatically sent to galaxy for analysis, and results retrieved.
+  
+- **Interactive Environments** 
+  - Rstudio, Jupyter notebooks 
+  - Visualisations (BAM.iobio, Phinch, ..)
+
+---
+class: center, middle
 ## Practical
 
 Uploading data  
