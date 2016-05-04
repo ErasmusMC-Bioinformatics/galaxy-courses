@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EMC Galaxy Training: Cancer Analysis</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      .red { color: #fa0000; }
+      .blue { color: #0000aa; }
+      .gray{ color: #666666; }
+      .small{font-size: 75%}
+      .footnote {
+        position:absolute;
+        bottom: 1em;
+        font-size: 0.6em;
+        color: #666666;
+       }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Cancer Analysis in Galaxy
+
+.blue[
+## EMC Galaxy Course
+
+Youri Hoogstrate, David van Zessen, Saskia Hiltemann,
+Andrew Stubbs
+]
+---
+.center[
+## Structural Variation
+]
+
+- Major source of **genetic diversity** in mammals and a **hallmark of cancer**
+
+- Structural variation (SV) is defined as differences in the copy number, orientation or location of relatively **large segments** (typically >100 bp)
+
+- Current data suggests 2 humans differ by approximately 5,000-10,000 inherited SVs, and that both inherited and de novo SVs contribute to a number of **normal and disease phenotypes**.
+
+- Virtually all **tumour genomes** harbour somatically-acquired SV, but the **landscape is extremely diverse**. Some tumours have hundreds, while others have very few.  
+![:scale 45% ;float: right](images/SVs.jpg)
+- Canonical forms
+  - duplication
+  - deletion
+  - insertion
+  - inversion
+  - translocation
+  
+.footnote[[Nature Reviews Genetics 12, 363-376 (May 2011) doi:10.1038/nrg2958]]
+---
+.center[
+## Structural Variation
+]
+
+- Recent studies reveal surprising number of **complex SVs** that evade simple classification
+
+- Complex SV: clustered breakpoints that arose through a single mutation but cannot be explained by simple end-joining or recombination events.
+
+- **Examples**
+  - Triplication
+  - Deletion/duplications within larger duplications
+  - Adjacent CNAs separated by unaltered intervening sequence
+  - CCR (complex chromosome rearrangements)
+---
+.center[
+## SV Detection
+]
+
+There are several strategies for the detection of structural variation
+- **Depth-of-Coverage (DOC)** use read depth to detect SVs which involve copy number changes, such as duplications, deletions etc.
+
+- **Paired-end Mapping (PEM)** Use paired-end or mate-pair mapping to find SVs at unexpected locations or orientations,
+  such as translocations, insertions, deletions, inversions
+
+- **Split-read mapping (SRM)** Use (long enough) reads which overlap the junction to find location of breakpoints to
+  base-pair resolution
+
+- **Assembly** De novo assemble reads before aligning to reference
+  
+---
+.center[
+## SV Detection
+
+![:scale 75%](images/SVs_detection.jpg)
+]
+.footnote[[Nature Methods 9, 133–137 (2012) doi:10.1038/nmeth.1858]]
+
+---
+.center[
+## Fusion Genes
+]
+When SVs occur inside genes, two different genes may become joined together. This can lead to **hybrid** (fusion) genes.
+
+**Example:** A large deletion between two adjacent genes with same orientation:
+
+.center[ ![](images/fusiongenes.jpg) ]
+
+---
+.center[
+## Fusion Genes
+]
+**TMPRSS2-ERG** Fusion in prostate cancer.  
+Fusion gene is present in 40% - 60% of prostate cancers in humans
+
+.center[ ![:scale 75%](images/tmprss2erg.png) ]
+
+.footnote[[ ]]
+---
+.center[
+## Fusion Genes
+]
+- There are many tools for the detection of fusion genes
+
+- Several are available in Galaxy
+
+- .gray[BreakDancer, BreakSeq, BreakPointer, BreakTrans, BreakWay, AGE, APOLLOH, CLEVER, clipcrop, Clippers, CloudBreak, CREST, deFUSE, DELLY, deStruct, detecttd, FACTERA, forestSV, FusionMap, Fusion Hunter, FusionQ, GASV, Genome STRiP, Genomon ITDetector, Gustaf, hot scan, Hydra, inGAP-s, LUMPY, MapSplice, nFUSE, PEMer, Pindel, PRISM, SlideSort-BPR, SLOPE,SOAP-sv, SOAP-fuse, Socrates, SoftSearch, SPLITREAD, SquareDancer, SVDetect, SVMerge, SVMiner, Svseq, TakeAreak, TEMP, TIGRA, TopHat-fusion, ..]
+
+- Agreement between different tools typically not very high
+
+- Tools are usually good at detection certain type/size of Svs, but bad at others.
+---
+.center[
+## iFUSE
+]
+
+- **Prioritisation** of junctions most likely to represent fusion genes
+
+- **Visualisation** of resulting event
+![:scale 50%; float: right](images/ifuse_interface.png)
+- **Prediction** of resulting sequence on DNA, RNA and protein level
+
+- Input: CG Junctions File, FusionMap report file `chr-start-end left, chr-start-end right`
+
+- http://ifuse.erasmusmc.nl
+
+- Now also ported to Galaxy!
+
+---
+.center[
+## Validation in VCaP
+]
+
+![:scale 45% ](images/ifuse_paper.png)
+![:scale 55%; float: right ](images/ifuse_paper3.png)
+![:scale 45%; float: left ](images/ifuse_paper4.png)
+
+![:scale 40%; float: left ](images/ifuse_paper2.png) 
+![:scale 45%; float: right  ](images/ifuse_paper5.png)
+![:scale 35%; float: right ](images/ifuse_paper6.png)
+
+---
+.center[
+## Complexities
+]
+
+Challenge: Complex Rearrangements involving multiple breakpoints
+
+- VCaP cell line sequenced at 100x coverage.
+- This cell line has the TMPRSS2:ERG fusion.
+- Not detected by iFUSE as same-direction fusion
+
+.center[ ![:scale 50%](images/ifuse_missed.png) ]
+
+---
+.center[
+## Chromothipsis
+]
+
+**Shattering of the chromosome** in one-off event -perhaps by ionizing radiation or one dramatic cycle of breakage-fusion-bridge, and stitched back together in an imprecise fashion.
+
+![:scale 55%; float: left ](images/chromothripsis.png)
+![:scale 35%; float: right](images/chromothripsis_vcap.png)
+
+---
+.center[
+## Virtual Normal
+]
+
+- We want to determine **somatic** (tumor-specific) variants
+
+- **Normal Correction:** Determine variants from normal tissue of the same individual
+
+.center[ ![:scale 50%](images/VN_matchednormal.png) ]
+
+---
+.center[
+## Virtual Normal
+]
+
+![:scale 35%; float: right](images/VN.png)
+- Problem: matching normal not always available
+
+- Problem: parts of matching normal not called or low confidence
+
+- Problem: cost of every experiment doubles
+- Solution: **Virtual Normal**, variants from set of healthy, unrelated individuals
+  - 433 Complete Genomics sample
+  - 31 EMC samples
+  
+
+.center[ ![:scale 40%](images/VN_diversity.png) ]
+
+---
+.center[
+## Virtual Normal
+]
+
+Small Variants
+
+.center[ ![:scale 90%](images/VN_smallvars_barchart.png) ]
+
+---
+.center[
+## Virtual Normal
+]
+
+Structural Variants
+
+.center[ ![:scale 90%](images/VN_svs_barchart.png) ]
+
+---
+.center[
+## Virtual Normal
+]
+
+How many normals do you need?
+
+.center[ ![:scale 90%](images/VN_howmany.png) ]
+
+---
+.center[
+## Virtual Normal
+]
+
+- Improved variant matching is needed, imple position-based methods are inadaquate due to variant calling complexities.
+
+- There **are no standards**. Even for the simple canonicalisation issue
+  - NGS sequencing:  left-most notation.
+  - HGVS: most 3’ notation. (= right-most alignment for forward strand genes) 
+  - Often unknown which conventions were used for variants deposited online
+
+.center[ ![:scale 50%](images/VN_canonicalisation.png) ]
+
+---
+.center[
+## Virtual Normal
+]
+
+- Method available in Galaxy
+
+- **Input:** VCF or Tab-separated table with `chr-start-end-reference-observed` columns
+
+- **Output:** file annotated with number of times each variant was observed in set of normals
+
+.center[ ![:scale 50%](images/VN_galaxytool.png) ]
+
+---
+.center[
+## iReport
+]
+
+- Combine outputs of various Galaxy tools into a single view
+
+- Interactive HTML report
+- **Cover page**
+  - Title of report
+  - Cover image (default EMC logo)
+- **Tabs (any number)**
+  - Title of tab
+  - Content items (any number)
+- **Content items**
+  - within each tab you can add any number of content items
+  - item types: 
+    - text field
+    - image
+    - table
+    - pdf file
+    - links (to files or web)
+---
+.center[
+## iReport
+]
+
+.center[ ![:scale 100%](images/ireport_example.png) ]
+
+---
+class: center
+## Practical
+
+Small Variants, SVs, CNVs
+
+![:scale 5% ](images/arrowdown.png) 
+
+Visualize with **Circos**  
+Visualize with **Generic Genomic Data Plotter**  
+Virtual Normal Correction  
+Fusion Gene visualization and prioritization with **iFUSE**  
+Create Web report with **iReport**  
+
+Manual: https://www.bioinf-galaxian.erasmusmc.nl/galaxy
+
+
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        remark.macros.scale = function (percentage) {
+            var url = this;
+            return '<img src="' + url + '" style="width: ' + percentage + '" />';
+            // Usage:
+            //   ![:scale 50%](image.jpg)
+            // Outputs:
+            //   <img src="image.jpg" style="width: 50%" />
+       };
+       remark.macros.float = function (where) {
+            var url = this;
+            return '<img src="' + url + '" style="float: ' + where + '" />';
+            // Usage:
+            //   ![:float right](image.jpg)
+            // Outputs:
+            //   <img src="image.jpg" style="float: right" />
+       };
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
