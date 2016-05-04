@@ -16,10 +16,13 @@
 
       .red { color: #fa0000; }
       .blue { color: #0000aa; }
-      .imagecenter { display: block; margin-left: auto; margin-right: auto; }
-      .floatleft{float: left}
-      .floatright{float: right}
       .small{font-size: 75%}
+      .footnote {
+        position:absolute;
+        bottom: 1em;
+        font-size: 0.6em;
+        color: #666666;
+       }
     </style>
   </head>
   <body>
@@ -141,8 +144,6 @@ Illumina 1.3+
 Illumina 1.8+  
 ]
 
-
-
 ---
 .center[
 ## Quality Control
@@ -186,6 +187,7 @@ Challenge: variants can have multiple representations
 
 ![:scale 90% ](images/variantcallers_comparison_giab.png) 
 
+.footnote[[Genome in a Bottle, Nature Methods 11, 369 (2014) doi:10.1038/nmeth.2902]]
 ---
 class: center
 ## Practical
@@ -201,7 +203,6 @@ Call variants with **Varscan2**
 Annotate variants with **ANNOVAR**  
 
 Manual: https://www.bioinf-galaxian.erasmusmc.nl/galaxy
-
 
 
     </textarea>
