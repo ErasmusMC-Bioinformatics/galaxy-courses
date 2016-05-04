@@ -18,3 +18,6 @@ Currently we have the following training modules:
 ## Tex-based materials
 This repository contains the templates to build our Galaxy course materials.
 Please change the settings in configure.tex before compilation (make).
+
+# License
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
