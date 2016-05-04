@@ -247,59 +247,72 @@ Once you do this the representation of the workflow in the bottom right corner o
 ![](images/101_31.png)
 
 #### Renaming inputs
-Right now both inputs to the workflow look exactly the same, named “Input dataset”. It will be
-very confusing which input should be exons and which should be SNPs:
-On the image above you will see that the top input dataset (the one with the blue border) connects
-to the Join tool first, so it must correspond to the exon data. If you click on this box (in the image
-above it is already clicked on because it is outlined with the blue border) you will be able to rename
-the dataset in the right pane:
-Then click on the second input dataset and rename it to “Features”. This would make the workflow
-a bit more generic, which will be useful later in this tutorial.
-4.5
-Renaming inputs
-Finally let’s rename the workflow’s output. For this click on the last dataset (“Compare two
-Queries”). Scroll down in the right pane, expand the “Add Actions” dialog and select “Rename
-14Dataset”:
-4.6
-Save! It is important...
+Right now both inputs to the workflow look exactly the same, both are labelled *Input dataset*. It will be very confusing which input should be the exons and which should be the SNPs:
+
+![](images/101_32.png)
+
+On the image above you will see that the top input dataset (the one with the blue border) connects to the Join tool first, so it must correspond to the exon data. If you click on this box (in the image above it is already clicked on because it is outlined with the blue border) you will be able to rename the dataset in the right pane:
+
+![](images/101_33.png)
+
+Then click on the second input dataset and rename it to *Features*. This will make the workflow a bit more generic, which will be useful later in this tutorial.
+
+
+#### Renaming outputs
+Finally let’s rename the workflow’s output. For this click on the last dataset (“Compare two Datasets”). Scroll down in the right pane, expand the “Add Actions” dialog and select “Rename Dataset”:
+
+![](images/101_34.png)
+
+
+#### Save the workflow (important!)
+
+By clicking on the gear icon in the top left of the screen.
+
+![](images/101_35.png)
+
 You can return to your the analysis view by clicking Analyze Data in the top menu.
-5
-Run workflow on different data
-Now that we have a workflow, let’s use it on some different data. For example, let’s find exons with
-the highest number of repetitive elements.
-5.1
-Create a new history
-Before we start let’s create a new history by clicking Options and selecting Create New. Let’s
-get the chr22 exons from the data library again, as well as a list of repetitive elements (which were
-also obtained from UCSC table browser):
-5.2
-Start the Workflow
-At this point you will have two items in your history: one with exons and one with repeats. First,
-click on the Workflow link at the top of Galaxy interface, mouse over “Find exons with highest
-number of SNPs” (or whatever you named your workflow), click on the arrow and press run:
-15The center pane will change to allow you launching the workflow. Select appropriate datasets for
-Exons and Repeats inputs as shown below, scroll down, and click Run workflow:
-Once the workflow has started you will initially be able to see all its steps (you may need to click
-the refresh button at the top of your history if the steps do not show up):
-Note that because all intermediate steps of the workflow were hidden, once it is finished you will
-only see final dataset #7. If we want to view the intermediate files, we can view the hidden datasets
-by selecting “Include Hidden datasets” from the history options menu.
-165.3
-Share your work
-I believe the most important part of galaxy comes at the end of an analysis. When you have
-published striking findings it is important that other researchers are able to reproduce your in silico
-experiment. Galaxy allows to share, or publish, your created workflows, histories with other galaxy
-users, with other users or with the entire outside world. Thus, this allows you to share your software
-and data together. To share a history, click on the gear symbol in the history pane and select Share
-or Publish. On this page you can do 3 things:
-1. Make accessible via Link. This generates a link that you can give out to others. Anybody
-with this link will be able to view your history (even without a Galaxy account).
-2. Publish History. This will not only create a link, but will also publish your history. (i.e.
-Your history will now appear under Shared Data → Published Histories)
-3. Share with Individual Users. This will share the history only with specific users on the
-Galaxy instance. Enter their email address (which they used to register their account in
-Galaxy)
-Challenge:
-• Share one of your histories with your neighbour, or publish it.
-• See if you can do the same with your workflow!
-17
+
+### Run workflow on different data
+Now that we have a workflow, let’s use it on some different data. For example, let’s find exons with the highest number of repetitive elements.
+
+#### Create a new history
+Before we start let’s create a new history by selecting `Create New` from the history options menu.
+
+Let’s get the chr22 exons from the data library again, as well as a list of repetitive elements (which were also obtained from UCSC table browser):
+
+![](images/101_36.png)
+
+
+#### Start the Workflow
+At this point you will have two items in your history: one with exons and one with repeats. First, click on the `Workflow` link at the top of Galaxy interface, locate your workflow `Find exons with highest number of SNPs` (or whatever you named your workflow), click on the arrow and press run:
+
+![](images/101_37.png)
+
+The center pane will change to allow you to configure and launch the workflow. Select appropriate datasets for Exons and Repeats inputs as shown below, scroll down, and click `Run workflow`:
+
+![](images/101_38.png)
+
+Once the workflow has started you will initially be able to see all its steps (you may need to click the refresh button at the top of your history if the steps do not show up):
+
+![](images/101_39.png)
+
+Note that because all intermediate steps of the workflow were hidden, once it is finished you will only see the final dataset. If we want to view the intermediate files after all, we can unhide all hidden datasets by selecting `Include Hidden datasets` from the history options menu.
+
+
+### Share your work
+One of the most important features of Galaxy comes at the end of an analysis. When you have published striking findings, it is important that other researchers are able to reproduce your in-silico experiment. Galaxy enables users to easily share their workflows and histories with others.
+
+To share a history, click on the gear symbol in the history pane and select `Share or Publish`. On this page you can do 3 things:
+
+1. **Make accessible via Link**. This generates a link that you can give out to others. Anybody with this link will be able to view your history (even without a Galaxy account).
+2. **Publish History**. This will not only create a link, but will also publish your history. (i.e. Your history will now appear under Shared Data → Published Histories)
+3. **Share with Individual Users**. This will share the history only with specific users on theGalaxy instance. Enter their email address (which they used to register their account in Galaxy)
+
+
+Try it yourself:
+  - Share one of your histories with your neighbour, or publish.
+  - See if you can do the same with your workflow!
+  - Find the history and/or workflow shared by your neighbour
+
+
+  ## The End! Well Done!
