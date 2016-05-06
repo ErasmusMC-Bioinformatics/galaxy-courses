@@ -1,22 +1,22 @@
 \section{RNA-Seq: alignment}
-To make more sense of the RNA-Seq data, we try to find the sequences back in the reference genome (mapping, aligning). The reference
-genome should represent the most common sequence of the chromosomes of the human population. Please read the first paragraph (3 scentences) of the following url: \url{http://en.wikipedia.org/wiki/Reference_genome}
+To make more sense of the RNA-Seq data, we try to locate the detected sequences back in a reference genome (this is often called mapping and aligning). The reference genome should represent the most common sequence of the chromosomes of the human population. Please read the first paragraph (3 scentences) of the following url: \url{http://en.wikipedia.org/wiki/Reference_genome}
 \begin{itemize}
 	\item On how many individuals is hg19 based?
 \end{itemize}
-For RNA-Seq we need specialized RNA aligners, able to cope with gaps that originate from splicing. For this exercise we will make use of a tool called RNA-STAR. There are quite some of these aligners around. We will make use the tool ``\textit{\underline{HISAT2} A fast and sensitive alignment program}''. Load the aligner, select the following settings and leave the rest on default, and run an alignment for \textit{miR-23b (clean)} and \textit{control sample (clean)}. \textbf{Alignment is a computational very very heavy task so do NOT re-run or load it twice, or you have to give a treat:}\\
+For RNA-Seq we need specialized RNA aligners, able to cope with gaps that originate from splicing. There are quite some of these aligners around. We will make use the tool ``\textit{\underline{RNA STAR} Gapped-read mapper for RNA-seq data}''. Load the aligner, select the following settings and leave the rest on default, and run an alignment for \textit{miR-23b (clean)} and \textit{control sample (clean)}. \textbf{Alignment is a computational very very heavy task so do NOT re-run it if you don't have a good reason, or you will have to give a treat:}\\
 \includegraphics[width=\textwidth]{figures/alignment_01.png}\\
-Please rename the \textit{HISAT2 on ...} to ``\textit{HISAT2 on miR-23b}'' and ``\textit{HISAT2 on control sample}''.
-If the alignments do not have their \textbf{database} set, change it to hg19 as follows:\\
+Please rename the \textit{RNA STAR on ...: starmapped.bam} to ``\textit{RNA STAR on miR-23b: starmapped.bam}'' and ``\textit{RNA STAR on control sample: starmapped.bam}'' or something else that makes it easy to recognize.
+If the alignments do not have their \textbf{database} (also referred to as \textbf{dbkey}) set, change it to hg19 as follows:\\
 \includegraphics[width=\textwidth]{figures/alignment_02.png}\\
-To get some general alignment statistics, run the tool ``\textit{\underline{Flagstat} tabulate descriptive stats for BAM datset}'' on \textit{HISAT2 on miR-23b}.
+To get some general alignment statistics, run the tool ``\textit{\underline{Flagstat} tabulate descriptive stats for BAM datset}'' on \textit{miR-23b}.
 \begin{itemize}
 	\item How many reads are multi-mapping?
 \end{itemize}
-For now we have only seen FastQ data and some summaries. To get an idea of what has been measured during the experiment, we can visualise the alignment. So, in the HISAT2 step we have been looking into hg19 where these sequences can be found in the reference genome, and this information is stored in those bam files. Import from the Shared Data library (TraIT Galaxy Training Materials $\rightarrow$ TraIT Galaxy Training - 3: RNA-Seq Tuxedo Pipeline) the file ``\textit{ucsc\_refseq.gtf}'' into your history. Start the built-in visualization Trackster at one of the alignments (make sure the dataset has \textbf{hg19} as database because we aligned to that):\\
+For now we have only seen FASTQ and summary files. To get an idea of what has been measured during the experiment, we can visualise the alignment. So, in the alignnment step we have been looking in hg19 where these sequences originate from, and this information is stored in the bam files. Import from the Shared Data library (\datalibrarydirrnaseqadvanced) the file ``\textit{ucsc\_refseq.gtf}'' into your history. Start the built-in visualization Trackster at one of the alignments (make sure the database is set to \textbf{hg19}):\\
 \includegraphics[scale=0.55]{figures/alignment_03}\\
-Give it a name, press \textit{Create} and you will see a yellow bar, indicating that the bam file is being prepared. This means that the bam file is being convert into a file format that the browser can visualize. \includegraphics[width=\textwidth]{figures/alignment_04.png}\\
-When this job is done, and it looks like this, make sure you save it:\\
+Give it a name, press \textit{Create} and you will see a yellow bar, indicating that the bam file is being prepared. This means that the bam file is being converted into a file format that the browser is able to visualize.\\
+\includegraphics[width=\textwidth]{figures/alignment_04.png}\\
+When this job is done, and it contains no error messages in the bars, which should look like the figure below, save it:\\
 \includegraphics[width=\textwidth]{figures/alignment_05.png}\\
 To add the other alignment, press the \textbf{[+]}-button:\\
 \includegraphics[width=\textwidth]{figures/alignment_06.png}\\
