@@ -1,13 +1,13 @@
 \section{RNA-Seq: alignment}
 To make more sense of the RNA-Seq data, we try to locate the detected sequences back in a reference genome (this is often called mapping and aligning).
 The reference genome should represent the most common sequence of the chromosomes of the human population.
-Please read the first paragraph (3 scentences) of the following url: \url{http://en.wikipedia.org/wiki/Reference_genome}
+Please read the first paragraph (3 sentences) of the following url: \url{http://en.wikipedia.org/wiki/Reference_genome}
 \begin{itemize}
 	\item On how many individuals is hg19 based?
 \end{itemize}
 For RNA-Seq we need specialized RNA aligners, able to cope with gaps that originate from splicing.
 There are quite some of these aligners around. We will make use the tool ``\textit{\underline{RNA STAR} Gapped-read mapper for RNA-seq data}''.
-Load the aligner, select the following settings and leave the rest on default, and run an alignment for \textit{miR-23b (clean)} and \textit{control sample (clean)}. \textbf{Alignment is a computational very very heavy task so do NOT re-run it if you don't have a good reason, or you will have to give a treat:}\\
+Load the aligner, select the following settings and leave the rest on default, and run an alignment for \textit{miR-23b (clean)} and \textit{control sample (clean)}. \textbf{Alignment is a computational very very heavy task so do NOT re-run it if you don't have a good reason, or you will have to give a treat.}\\
 \includegraphics[width=\textwidth]{figures/alignment_01.png}\\
 Please rename the \textit{RNA STAR on ...: starmapped.bam} to ``\textit{RNA STAR on miR-23b: starmapped.bam}'' and ``\textit{RNA STAR on control sample: starmapped.bam}'' or something else that makes it easy to recognize.
 If the alignments do not have their \textbf{database} (also referred to as \textbf{dbkey}) set, change it to hg19 as follows:\\
@@ -35,7 +35,9 @@ To help you answer this question, you can add ``\textit{ucsc\_refseq.gtf}'' that
 \begin{itemize}
 	\item Can you go to \verb|chr15:60688011-60688099|, and explain what is going on there?
 \end{itemize}
-In the last question you can clearly see that you can observe biological facts from alignments where you couldn't extract this from the plain fastq files. Because looking through these alignments is way to much work and prone to errors, we use these bam files for a variety of computer programs to estimate metrics. These metrics can be insert size, expression levels, indel ratio's, etc., that may be used to test different hypotheses.
+In the last question you can clearly see that you can observe biological facts from alignments where you couldn't extract this from the plain fastq files.
+Because looking through all alignments 'by hand' is way too much work and prone to errors, we use these bam files for a variety of computer programs to estimate metrics for you instead.
+These metrics can be insert size, expression levels, indel ratio's, etc., that may be used to test different hypotheses.
 
 %The insert size is the size between the mate pairs in the alignment. Since the fragments (original part of RNA) are size selected, this should also be reflect in the alignment. Leave Trackster and run the Picard tool: ``Insertion size metrics for pairedd data''.
 

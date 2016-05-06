@@ -1,18 +1,24 @@
 \section{Expression analysis advanced}
 \subsection{Estimating gene expression}
-For this practical we need a RNA-seq alignments we previously made in the basic expression analysis: ``\textit{HISAT2 on miR-23b.bam}''. If you did not do that practical, you can find it in the supplementary material: \\
-\datalibrarydirrnaseqadvanced $\rightarrow$ HISAT2\\
-Ensure that the file is annotated at reference genome hg19. To estimate expression in RNA-Seq, we can simply count the number of reads that are aligned to each gene from the list of candidate genes. Therefore you also need to import:
-\datalibrarydirrnaseqtuxedo $\rightarrow$ ucsc\_refseq.gtf\\
-This list is provided as a GTF/GFF file. There are a variety of tools available for counting reads. FeatureCounts is one of the fastest and it works directly using BAM files. If you search for
-``\textit{\underline{featureCounts} Measure gene expression in RNA-Seq experiments from SAM or BAM files.}'' in the Tools menu, you can find the wrapper by the name:\\
+For this practical we need a RNA-seq alignments we previously made in the basic expression analysis: ``\textit{... miR-23b.bam}''. If you did not do that practical, you can find it in the supplementary material: \\
+\datalibrarydirrnaseqadvanced $\rightarrow$ \textit{miR-23b.bam (clean)}\\
+Ensure that the file is annotated at reference genome hg19. To estimate expression in RNA-Seq, we can count the number of reads that are aligned to each gene from the list of candidate genes. Therefore you also need to import:\\
+\datalibrarydirrnaseqadvanced $\rightarrow$ ucsc\_refseq.gtf\\
+This list is provided as a GTF/GFF file.
+There are a variety of tools available for counting reads.
+FeatureCounts is one of the faster tools and it works directly using BAM files. If you search for:\\
+``\textit{\underline{featureCounts} Measure gene expression in RNA-Seq experiments from SAM or BAM files.}''\\
+in the Tools menu, you can find the wrapper by the name:\\
 \includegraphics[width=\textwidth]{figures/expression_01.png}\\
 Before we proceed, we would like to know whether the analysis has been performed correctly. Therefore we take a look at featureCounts’ output-summary file ``\textit{featureCounts on \ldots}'':
 \begin{itemize}
 	\item How many reads are \textit{Assigned}?
 	\item How many reads are \textit{UnAssigned (sum of all)}?
 \end{itemize}
-The flagstat exercise told us we had 18258 reads in total. This should match with the total number of reads in the summary file as well. If we want to look at a particular gene, we truncate the large table and only show the row with the gene of interest. To filter a tabular file we proceed with the following Galaxy tool: 
+Flagstat told us the alignment has 18258 or 19493 reads in total (different versions).
+Please confirm whether this matches with the total number of reads in the featureCounts summary file.
+If we want to look at a particular gene, we may truncate the large table and only show the row with the gene of interest.
+To filter a tabular file we proceed with the following Galaxy tool: 
 \textit{\underline{Filter} data on any column using simple expressions}:\\
 \includegraphics[width=\textwidth]{figures/expression_02.png}\\
 \begin{itemize}
@@ -21,14 +27,16 @@ The flagstat exercise told us we had 18258 reads in total. This should match wit
 \end{itemize}
 
 \subsection{Expression analysis: Low sequencing depth}
-In the previous exercise we found which gene had the highest readcount, but what does it mean if this gene has a high read count in every sample? To say something about expression levels, we should say it in a context relative to other expression levels. Therefore, we need normalization and apply statistical testing. A popular package that allows to do this is EdgeR.
+In the previous exercise we found which gene had the highest readcount, but what does it mean if this gene has a high read count in every sample? To say something about expression levels, we should say it in a context relative to other expression levels. Therefore, we need normalization and apply statistical testing. A popular package that allows to do this is EdgeR which in galaxy fits perfectly with featureCounts.
 
-In the following analyses you will determine the differentially expressed genes in the MCF7-cell line between samples that have been treated with the hormone $\beta$-estradiol (E2) and those that were left as control. For this analysis we will make use of samples all taken from this cell line. In the corresponding article, the statistical power has been estimated at different sequencing depths (subsampling) and with a different number of replicates. Before we proceed, please read the abstract of the following article:
+In the following analyses you will determine the differentially expressed genes in the MCF7-cell line between samples that have been treated with the hormone $\beta$-estradiol (E2) and those that were left as control. The data was originally used to benchmark the statistical power of replicates and does not reflect a certain disease state. However, it is a classical 2-class approach and a similar setup can be useful for cancer analysis. Before we proceed, please read the abstract of the following article:
 \url{http://dx.doi.org/10.1093/bioinformatics/btt688}\\
 Tip: Look up where MCF7 cell lines originate from if you don't know this.\\
 \\
-In the article it is stated that for differential gene expression analysis it is very important to have a high number of replicates per condition. We will repeat a part of their experiment, to illustrate their findings. For this practical we have the readcounts for a sequencing depth of $\sim$30M (full), 10M and 5M, for each replicate, already made available. Each analysis in this assignment
-will be to determine the number of differentially expressed (DE) genes and add this number to Table \ref{tab:dge_ad_01}:
+For this analysis we will make use of samples all taken from this cell line.
+In the article it is stated that for differential gene expression analysis it is very important to have a high number of replicates per condition.
+We will repeat a part of their experiment, to illustrate their findings. For this practical we have the readcounts for a sequencing depth of $\sim$30M (full), 10M and 5M, for each replicate, already made available.
+Each analysis in this assignment will be to determine the number of differentially expressed (DE) genes and add this number to Table \ref{tab:dge_ad_01}:
 \begin{table}[]
 \centering
 \caption{results of DGE analysis}
@@ -58,10 +66,9 @@ Please take a look at the file GSE51403\_design\_matrix\_subsampled.txt.
 	\item Given that the first column lists the names of the samples and the second column the samples' corresponding condition, how many conditions does the experiment have?
 \end{itemize}
 \subsubsection{Subsampled datasets: 5M, 7+7}
-We have a two classes problem: the class itreated with estradiol is called “ E2”, and the
-other called “Control”. The design matrix provides the mapping from the RNAseq
-counts per sample to the phenotype class each is associated with. Take a look at the
-design matrix and see if you can find samples that belong to those classes.
+We have a two classes problem: the class itreated with estradiol is called ``E2'', and the other called ``Control''.
+The design matrix provides the mapping from the RNAseq counts per sample to the phenotype class each is associated with.
+Take a look at the design matrix and see if you can find samples that belong to two mentioned classes.
 \begin{itemize}
 	\item [$\square$] Load ``\textit{\underline{edgeR: Differential Gene(Expression) Analysis} RNA-Seq gene expression analysis using edgeR (R package)}
 	\item [$\square$] Choose \textbf{Analysis type}: \textit{Multigroup test and/or complex designs with e.g. blocking}
