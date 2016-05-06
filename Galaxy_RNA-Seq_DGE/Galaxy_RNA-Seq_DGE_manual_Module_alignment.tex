@@ -1,10 +1,16 @@
 \section{RNA-Seq: alignment}
-To make more sense of the RNA-Seq data, we try to find the sequences back in the reference genome (mapping, aligning). The reference
-genome should represent the most common sequence of the chromosomes of the human population. Please read the first paragraph (3 scentences) of the following url: \url{http://en.wikipedia.org/wiki/Reference_genome}
+To make more sense of the RNA-Seq data, we try to find the detected sequences back in a reference genome (this process is also referred to as mapping and aligning).
+The reference genome should represent the most common sequence of the chromosomes of the human population.
+Please read the first paragraph (3 scentences) of the following url: \url{http://en.wikipedia.org/wiki/Reference_genome}
 \begin{itemize}
 	\item On how many individuals is hg19 based?
 \end{itemize}
-For RNA-Seq we need specialized RNA aligners, able to cope with gaps that originate from splicing. For this exercise we will make use of a tool called RNA-STAR. There are quite some of these aligners around. We will make use the tool ``\textit{\underline{HISAT2} A fast and sensitive alignment program}''. Load the aligner, select the following settings and leave the rest on default, and run an alignment for \textit{miR-23b (clean)} and \textit{control sample (clean)}. \textbf{Alignment is a computational very very heavy task so do NOT re-run or load it twice, or you have to give a treat:}\\
+For RNA-Seq we need specialized RNA aligners, able to cope with gaps that originate from splicing.
+There are quite some of these aligners around.
+For this course we will make use the tool ``\textit{\underline{RNA STAR} Gapped-read mapper for RNA-seq data}''.
+Load the aligner, select the settings as given in the figure below and leave the rest on default.
+Create an alignment for both \textit{miR-23b (clean)} and \textit{control sample (clean)}. \\
+\textbf{Note: alignment is a computational very very heavy task so do NOT re-run unless this is really necessary, otherwise you have to give a treat.}\\
 \includegraphics[width=\textwidth]{figures/alignment_01.png}\\
 Please rename the \textit{HISAT2 on ...} to ``\textit{HISAT2 on miR-23b}'' and ``\textit{HISAT2 on control sample}''.
 If the alignments do not have their \textbf{database} set, change it to hg19 as follows:\\
