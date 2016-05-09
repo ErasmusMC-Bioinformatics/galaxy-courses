@@ -15,6 +15,22 @@ Currently we have the following training modules:
 - [**Cancer Analysis**](Cancer_Analysis)  
   Fusion Genes, Virtual Normal Correction, Reporting
 
+## Remark slides
+
+convert to pdf:
+
+install wkhtmltopdf:
+
+```
+sudo apt-get install wkhtmltopdf
+```
+
+convert the slides:
+
+```
+wkhtmltopdf --page-width 111 --page-height 148  -O "Landscape" <html slides> outputslides.pdf
+```
+
 ## Tex-based materials
 This repository contains the templates to build our Galaxy course materials.
 Please change the settings in configure.tex before compilation (make).
