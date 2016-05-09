@@ -17,7 +17,7 @@ Currently we have the following training modules:
 
 ## Remark slides
 
-convert to pdf:
+**converting to pdf:**
 
 install wkhtmltopdf:
 
@@ -29,6 +29,14 @@ convert the slides:
 
 ```
 wkhtmltopdf --page-width 111 --page-height 148  -O "Landscape" <html slides> outputslides.pdf
+```
+
+for example for the current modules with markdown slides:
+
+```
+wkhtmltopdf --page-width 111 --page-height 148  -O "Landscape" Galaxy101/Galaxy101_slides.html Galaxy101_slides.pdf
+wkhtmltopdf --page-width 111 --page-height 148  -O "Landscape" Cancer_Analysis/Cancer_Analysis_slides.html Cancer_Analysis_slides.pdf
+wkhtmltopdf --page-width 111 --page-height 148  -O "Landscape" Variant_Analysis/VariantAnalysis_slides.html VariantAnalysis_slides.pdf
 ```
 
 ## Tex-based materials
