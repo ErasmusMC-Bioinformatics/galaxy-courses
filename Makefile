@@ -4,6 +4,7 @@ all:
 	mkdir -p build
 	cd Galaxy_101_Introduction_Course ; make
 	cd Galaxy_RNA-Seq_DGE ; make
+	cd Variant_Analysis ; make
 	cp */*.pdf build
 	echo "\n\n\nRun 'make tidy' to clean-up all temp files"
 
