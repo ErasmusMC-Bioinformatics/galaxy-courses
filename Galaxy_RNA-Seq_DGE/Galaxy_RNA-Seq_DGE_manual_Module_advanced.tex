@@ -17,17 +17,19 @@ Before we proceed, we would like to know whether the analysis has been performed
 \end{itemize}
 Flagstat told us the alignment has 18258 or 19493 reads in total (different versions).
 Please confirm whether this matches with the total number of reads in the featureCounts summary file.
-If we want to look at a particular gene, we may truncate the large table and only show the row with the gene of interest.
+
+If we want to look at a particular gene, we may want to truncate the large table and only show the row with the gene of interest.
 To filter a tabular file we proceed with the following Galaxy tool: 
 \textit{\underline{Filter} data on any column using simple expressions}:\\
 \includegraphics[width=\textwidth]{figures/expression_02.png}\\
 \begin{itemize}
 	\item How many reads are aligned to ANXA2?
-	\item What gene has the highest gene count (tip: use \textit{sort})?
+	\item What gene has the highest read count (tip: use \textit{sort})?
 \end{itemize}
 
 \subsection{Expression analysis: Low sequencing depth}
-In the previous exercise we found which gene had the highest readcount, but what does it mean if this gene has a high read count in every sample? To say something about expression levels, we should say it in a context relative to other expression levels. Therefore, we need normalization and apply statistical testing. A popular package that allows to do this is EdgeR which in galaxy fits perfectly with featureCounts.
+In the previous exercise we found which gene had the highest readcount, but what does it mean if this gene has a high read count in every sample?
+To say something about expression levels, we should say it in a context relative to other expression levels. Therefore, we need normalization and apply statistical testing. A popular package that allows to do this is EdgeR which in galaxy fits perfectly with featureCounts.
 
 In the following analyses you will determine the differentially expressed genes in the MCF7-cell line between samples that have been treated with the hormone $\beta$-estradiol (E2) and those that were left as control. The data was originally used to benchmark the statistical power of replicates and does not reflect a certain disease state. However, it is a classical 2-class approach and a similar setup can be useful for cancer analysis. Before we proceed, please read the abstract of the following article:
 \url{http://dx.doi.org/10.1093/bioinformatics/btt688}\\
