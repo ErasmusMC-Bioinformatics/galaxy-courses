@@ -1,0 +1,291 @@
+@Article{cufflinks,
+author={Trapnell, Cole
+and Williams, Brian A.
+and Pertea, Geo
+and Mortazavi, Ali
+and Kwan, Gordon
+and van Baren, Marijke J.
+and Salzberg, Steven L.
+and Wold, Barbara J.
+and Pachter, Lior},
+title={Transcript assembly and quantification by RNA-Seq reveals unannotated transcripts and isoform switching during cell differentiation},
+journal={Nat Biotech},
+year={2010},
+month={May},
+publisher={Nature Publishing Group},
+volume={28},
+number={5},
+pages={511-515},
+issn={1087-0156},
+doi={10.1038/nbt.1621},
+url={http://dx.doi.org/10.1038/nbt.1621}
+}
+
+@Article{cuffdiff_n2,
+author={Trapnell, Cole
+and Hendrickson, David G.
+and Sauvageau, Martin
+and Goff, Loyal
+and Rinn, John L.
+and Pachter, Lior},
+title={Differential analysis of gene regulation at transcript resolution with RNA-seq},
+journal={Nat Biotech},
+year={2013},
+month={Jan},
+publisher={Nature Publishing Group, a division of Macmillan Publishers Limited. All Rights Reserved.},
+volume={31},
+number={1},
+pages={46-53},
+issn={1087-0156},
+doi={10.1038/nbt.2450},
+url={http://dx.doi.org/10.1038/nbt.2450}
+}
+
+@article{deseq2,
+	author = {Love, Michael I and Huber, Wolfgang and Anders, Simon},
+	title = {Moderated estimation of fold change and dispersion for RNA-Seq data with DESeq2},
+	year = {2014},
+	doi = {10.1101/002832},
+	publisher = {Cold Spring Harbor Labs Journals},
+	journal = {bioRxiv}
+}
+
+
+@article{subread,
+author = {Liao, Yang and Smyth, Gordon K. and Shi, Wei}, 
+title = {The Subread aligner: fast, accurate and scalable read mapping by seed-and-vote},
+volume = {41}, 
+number = {10}, 
+pages = {e108}, 
+year = {2013}, 
+doi = {10.1093/nar/gkt214}, 
+abstract ={Read alignment is an ongoing challenge for the analysis of data from sequencing technologies. This article proposes an elegantly simple multi-seed strategy, called seed-and-vote, for mapping reads to a reference genome. The new strategy chooses the mapped genomic location for the read directly from the seeds. It uses a relatively large number of short seeds (called subreads) extracted from each read and allows all the seeds to vote on the optimal location. When the read length is <160 bp, overlapping subreads are used. More conventional alignment algorithms are then used to fill in detailed mismatch and indel information between the subreads that make up the winning voting block. The strategy is fast because the overall genomic location has already been chosen before the detailed alignment is done. It is sensitive because no individual subread is required to map exactly, nor are individual subreads constrained to map close by other subreads. It is accurate because the final location must be supported by several different subreads. The strategy extends easily to find exon junctions, by locating reads that contain sets of subreads mapping to different exons of the same gene. It scales up efficiently for longer reads.}, 
+URL = {http://nar.oxfordjournals.org/content/41/10/e108.abstract}, 
+eprint = {http://nar.oxfordjournals.org/content/41/10/e108.full.pdf+html}, 
+journal = {Nucleic Acids Research} 
+}
+
+@article{htseq,
+	author = {Anders, Simon and Pyl, Paul Theodor and Huber, Wolfgang},
+	title = {HTSeq: A Python framework to work with high-throughput sequencing data},
+	year = {2014},
+	doi = {10.1101/002824},
+	URL = {http://biorxiv.org/content/early/2014/02/20/002824},
+	eprint = {http://biorxiv.org/content/early/2014/02/20/002824.full.pdf},
+	publisher = {Cold Spring Harbor Labs Journals},
+	journal = {bioRxiv}
+}
+
+@article{mcf7,
+author = {Liu, Yuwen and Zhou, Jie and White, Kevin P.}, 
+title = {RNA-seq differential expression studies: more sequence or more replication?},
+volume = {30}, 
+number = {3}, 
+pages = {301-304}, 
+year = {2014}, 
+doi = {10.1093/bioinformatics/btt688}, 
+abstract ={Motivation: RNA-seq is replacing microarrays as the primary tool for gene expression studies. Many RNA-seq studies have used insufficient biological replicates, resulting in low statistical power and inefficient use of sequencing resources.Results: We show the explicit trade-off between more biological replicates and deeper sequencing in increasing power to detect differentially expressed (DE) genes. In the human cell line MCF7, adding more sequencing depth after 10 M reads gives diminishing returns on power to detect DE genes, whereas adding biological replicates improves power significantly regardless of sequencing depth. We also propose a cost-effectiveness metric for guiding the design of large-scale RNA-seq DE studies. Our analysis showed that sequencing less reads and performing more biological replication is an effective strategy to increase power and accuracy in large-scale differential expression RNA-seq studies, and provided new insights into efficient experiment design of RNA-seq studies.Availability and implementation: The code used in this paper is provided on: http://home.uchicago.edu/∼jiezhou/replication/. The expression data is deposited in the Gene Expression Omnibus under the accession ID GSE51403.Contact: kpwhite@uchicago.eduSupplementary information: Supplementary data are available at Bioinformatics online.}, 
+URL = {http://bioinformatics.oxfordjournals.org/content/30/3/301.abstract}, 
+eprint = {http://bioinformatics.oxfordjournals.org/content/30/3/301.full.pdf+html}, 
+journal = {Bioinformatics} 
+}
+
+@article{varscan,
+author = {Koboldt, Daniel C. and Chen, Ken and Wylie, Todd and Larson, David E. and McLellan, Michael D. and Mardis, Elaine R. and Weinstock, George M. and Wilson, Richard K. and Ding, Li}, 
+title = {VarScan: variant detection in massively parallel sequencing of individual and pooled samples},
+volume = {25}, 
+number = {17}, 
+pages = {2283-2285}, 
+year = {2009}, 
+doi = {10.1093/bioinformatics/btp373}, 
+abstract ={Summary: Massively parallel sequencing technologies hold incredible promise for the study of DNA sequence variation, particularly the identification of variants affecting human disease. The unprecedented throughput and relatively short read lengths of Roche/454, Illumina/Solexa, and other platforms have spurred development of a new generation of sequence alignment algorithms. Yet detection of sequence variants based on short read alignments remains challenging, and most currently available tools are limited to a single platform or aligner type. We present VarScan, an open source tool for variant detection that is compatible with several short read aligners. We demonstrate VarScan's ability to detect SNPs and indels with high sensitivity and specificity, in both Roche/454 sequencing of individuals and deep Illumina/Solexa sequencing of pooled samples.Availability and Implementation: Source code and documentation freely available at http://genome.wustl.edu/tools/cancer-genomics implemented as a Perl package and supported on Linux/UNIX, MS Windows and Mac OSX.Contact: dkoboldt@genome.wustl.eduSupplementary information: Supplementary data are available at Bioinformatics online.}, 
+URL = {http://bioinformatics.oxfordjournals.org/content/25/17/2283.abstract}, 
+eprint = {http://bioinformatics.oxfordjournals.org/content/25/17/2283.full.pdf+html}, 
+journal = {Bioinformatics} 
+}
+
+
+
+
+@article{tophat,
+author = {Trapnell, Cole and Pachter, Lior and Salzberg, Steven L.}, 
+title = {TopHat: discovering splice junctions with RNA-Seq},
+volume = {25}, 
+number = {9}, 
+pages = {1105-1111}, 
+year = {2009}, 
+doi = {10.1093/bioinformatics/btp120}, 
+abstract ={Motivation: A new protocol for sequencing the messenger RNA in a cell, known as RNA-Seq, generates millions of short sequence fragments in a single run. These fragments, or ‘reads’, can be used to measure levels of gene expression and to identify novel splice variants of genes. However, current software for aligning RNA-Seq data to a genome relies on known splice junctions and cannot identify novel ones. TopHat is an efficient read-mapping algorithm designed to align reads from an RNA-Seq experiment to a reference genome without relying on known splice sites.Results: We mapped the RNA-Seq reads from a recent mammalian RNA-Seq experiment and recovered more than 72% of the splice junctions reported by the annotation-based software from that study, along with nearly 20 000 previously unreported junctions. The TopHat pipeline is much faster than previous systems, mapping nearly 2.2 million reads per CPU hour, which is sufficient to process an entire RNA-Seq experiment in less than a day on a standard desktop computer. We describe several challenges unique to ab initio splice site discovery from RNA-Seq reads that will require further algorithm development.Availability: TopHat is free, open-source software available from http://tophat.cbcb.umd.eduContact: cole@cs.umd.eduSupplementary information: Supplementary data are available at Bioinformatics online.}, 
+URL = {http://bioinformatics.oxfordjournals.org/content/25/9/1105.abstract}, 
+eprint = {http://bioinformatics.oxfordjournals.org/content/25/9/1105.full.pdf+html}, 
+journal = {Bioinformatics} 
+}
+
+@Article{tophat2,
+AUTHOR = {Kim, Daehwan and Pertea, Geo and Trapnell, Cole and Pimentel, Harold and Kelley, Ryan and Salzberg, Steven},
+TITLE = {TopHat2: accurate alignment of transcriptomes in the presence of insertions, deletions and gene fusions},
+JOURNAL = {Genome Biology},
+VOLUME = {14},
+YEAR = {2013},
+NUMBER = {4},
+PAGES = {R36},
+URL = {http://genomebiology.com/2013/14/4/R36},
+DOI = {10.1186/gb-2013-14-4-r36},
+PubMedID = {23618408},
+ISSN = {1465-6906},
+ABSTRACT = {TopHat is a popular spliced aligner for RNA-sequence (RNA-seq) experiments. In this paper, we describe TopHat2, which incorporates many significant enhancements to TopHat. TopHat2 can align reads of various lengths produced by the latest sequencing technologies, while allowing for variable-length indels with respect to the reference genome. In addition to de novo spliced alignment, TopHat2 can align reads across fusion breaks, which can occur after genomic translocations. TopHat2 combines the ability to identify novel splice sites with direct mapping to known transcripts, producing sensitive and accurate alignments, even for highly repetitive genomes or in the presence of pseudogenes. TopHat2 is available at http://ccb.jhu.edu/software/tophat webcite.},
+}
+
+@article{star,
+author = {Dobin, Alexander and Davis, Carrie A. and Schlesinger, Felix and Drenkow, Jorg and Zaleski, Chris and Jha, Sonali and Batut, Philippe and Chaisson, Mark and Gingeras, Thomas R.}, 
+title = {STAR: ultrafast universal RNA-seq aligner},
+volume = {29}, 
+number = {1}, 
+pages = {15-21}, 
+year = {2013}, 
+doi = {10.1093/bioinformatics/bts635}, 
+abstract ={Motivation: Accurate alignment of high-throughput RNA-seq data is a challenging and yet unsolved problem because of the non-contiguous transcript structure, relatively short read lengths and constantly increasing throughput of the sequencing technologies. Currently available RNA-seq aligners suffer from high mapping error rates, low mapping speed, read length limitation and mapping biases.Results: To align our large (>80 billon reads) ENCODE Transcriptome RNA-seq dataset, we developed the Spliced Transcripts Alignment to a Reference (STAR) software based on a previously undescribed RNA-seq alignment algorithm that uses sequential maximum mappable seed search in uncompressed suffix arrays followed by seed clustering and stitching procedure. STAR outperforms other aligners by a factor of >50 in mapping speed, aligning to the human genome 550 million 2 × 76 bp paired-end reads per hour on a modest 12-core server, while at the same time improving alignment sensitivity and precision. In addition to unbiased de novo detection of canonical junctions, STAR can discover non-canonical splices and chimeric (fusion) transcripts, and is also capable of mapping full-length RNA sequences. Using Roche 454 sequencing of reverse transcription polymerase chain reaction amplicons, we experimentally validated 1960 novel intergenic splice junctions with an 80–90% success rate, corroborating the high precision of the STAR mapping strategy.Availability and implementation: STAR is implemented as a standalone C++ code. STAR is free open source software distributed under GPLv3 license and can be downloaded from http://code.google.com/p/rna-star/.Contact: dobin@cshl.edu.}, 
+URL = {http://bioinformatics.oxfordjournals.org/content/29/1/15.abstract}, 
+eprint = {http://bioinformatics.oxfordjournals.org/content/29/1/15.full.pdf+html}, 
+journal = {Bioinformatics} 
+}
+
+@inbook {gatk,
+title = {From FastQ Data to High-Confidence Variant Calls: The Genome Analysis Toolkit Best Practices Pipeline},
+author = {Van der Auwera, Geraldine A. and Carneiro, Mauricio O. and Hartl, Christopher and Poplin, Ryan and del Angel, Guillermo and Levy-Moonshine, Ami and Jordan, Tadeusz and Shakir, Khalid and Roazen, David and Thibault, Joel and Banks, Eric and Garimella, Kiran V. and Altshuler, David and Gabriel, Stacey and DePristo, Mark A.},
+publisher = {John Wiley and Sons, Inc.},
+isbn = {9780471250951},
+chapter = {11:11.10},
+pages = {11.10.1-11.10.33},
+url = {http://dx.doi.org/10.1002/0471250953.bi1110s43},
+doi = {10.1002/0471250953.bi1110s43},
+keywords = {NGS, WGS, exome, variant detection, genotyping},
+booktitle = {Current Protocols in Bioinformatics},
+year = {2002},
+}
+
+@article{samtools,
+author = {Li, Heng and Handsaker, Bob and Wysoker, Alec and Fennell, Tim and Ruan, Jue and Homer, Nils and Marth, Gabor and Abecasis, Goncalo and Durbin, Richard and 1000 Genome Project Data Processing Subgroup}, 
+title = {The Sequence Alignment/Map format and SAMtools},
+volume = {25}, 
+number = {16}, 
+pages = {2078-2079}, 
+year = {2009}, 
+doi = {10.1093/bioinformatics/btp352}, 
+abstract ={Summary: The Sequence Alignment/Map (SAM) format is a generic alignment format for storing read alignments against reference sequences, supporting short and long reads (up to 128 Mbp) produced by different sequencing platforms. It is flexible in style, compact in size, efficient in random access and is the format in which alignments from the 1000 Genomes Project are released. SAMtools implements various utilities for post-processing alignments in the SAM format, such as indexing, variant caller and alignment viewer, and thus provides universal tools for processing read alignments.Availability: http://samtools.sourceforge.netContact: rd@sanger.ac.uk}, 
+URL = {http://bioinformatics.oxfordjournals.org/content/25/16/2078.abstract}, 
+eprint = {http://bioinformatics.oxfordjournals.org/content/25/16/2078.full.pdf+html}, 
+journal = {Bioinformatics} 
+}
+
+@article{galaxy,
+author = {Giardine, Belinda and Riemer, Cathy and Hardison, Ross C. and Burhans, Richard and Elnitski, Laura and Shah, Prachi and Zhang, Yi and Blankenberg, Daniel and Albert, Istvan and Taylor, James and Miller, Webb and Kent, W. James and Nekrutenko, Anton}, 
+title = {Galaxy: A platform for interactive large-scale genome analysis},
+volume = {15}, 
+number = {10}, 
+pages = {1451-1455}, 
+year = {2005}, 
+doi = {10.1101/gr.4086505}, 
+abstract ={Accessing and analyzing the exponentially expanding genomic sequence and functional data pose a challenge for biomedical researchers. Here we describe an interactive system, Galaxy, that combines the power of existing genome annotation databases with a simple Web portal to enable users to search remote resources, combine data from independent queries, and visualize the results. The heart of Galaxy is a flexible history system that stores the queries from each user; performs operations such as intersections, unions, and subtractions; and links to other computational tools. Galaxy can be accessed at http://g2.bx.psu.edu.}, 
+URL = {http://genome.cshlp.org/content/15/10/1451.abstract}, 
+eprint = {http://genome.cshlp.org/content/15/10/1451.full.pdf+html}, 
+journal = {Genome Research} 
+}
+
+@article{ucsc,
+author = {Karolchik, Donna and Barber, Galt P. and Casper, Jonathan and Clawson, Hiram and Cline, Melissa S. and Diekhans, Mark and Dreszer, Timothy R. and Fujita, Pauline A. and Guruvadoo, Luvina and Haeussler, Maximilian and Harte, Rachel A. and Heitner, Steve and Hinrichs, Angie S. and Learned, Katrina and Lee, Brian T. and Li, Chin H. and Raney, Brian J. and Rhead, Brooke and Rosenbloom, Kate R. and Sloan, Cricket A. and Speir, Matthew L. and Zweig, Ann S. and Haussler, David and Kuhn, Robert M. and Kent, W. James}, 
+title = {The UCSC Genome Browser database: 2014 update},
+volume = {42}, 
+number = {D1}, 
+pages = {D764-D770}, 
+year = {2014}, 
+doi = {10.1093/nar/gkt1168}, 
+abstract ={The University of California Santa Cruz (UCSC) Genome Browser (http://genome.ucsc.edu) offers online public access to a growing database of genomic sequence and annotations for a large collection of organisms, primarily vertebrates, with an emphasis on the human and mouse genomes. The Browser’s web-based tools provide an integrated environment for visualizing, comparing, analysing and sharing both publicly available and user-generated genomic data sets. As of September 2013, the database contained genomic sequence and a basic set of annotation ‘tracks’ for ∼90 organisms. Significant new annotations include a 60-species multiple alignment conservation track on the mouse, updated UCSC Genes tracks for human and mouse, and several new sets of variation and ENCODE data. New software tools include a Variant Annotation Integrator that returns predicted functional effects of a set of variants uploaded as a custom track, an extension to UCSC Genes that displays haplotype alleles for protein-coding genes and an expansion of data hubs that includes the capability to display remotely hosted user-provided assembly sequence in addition to annotation data. To improve European access, we have added a Genome Browser mirror (http://genome-euro.ucsc.edu) hosted at Bielefeld University in Germany.}, 
+URL = {http://nar.oxfordjournals.org/content/42/D1/D764.abstract}, 
+eprint = {http://nar.oxfordjournals.org/content/42/D1/D764.full.pdf+html}, 
+journal = {Nucleic Acids Research} 
+}
+
+@article{dbsnp,
+author = {Smigielski, Elizabeth M. and Sirotkin, Karl and Ward, Minghong and Sherry, Stephen T.}, 
+title = {dbSNP: a database of single nucleotide polymorphisms},
+volume = {28}, 
+number = {1}, 
+pages = {352-355}, 
+year = {2000}, 
+doi = {10.1093/nar/28.1.352}, 
+abstract ={In response to a need for a general catalog of genome variation to address the large-scale sampling designs required by association studies, gene mapping and evolutionary biology, the National Cancer for Biotechnology Information (NCBI) has established the dbSNP database. Submissions to dbSNP will be integrated with other sources of information at NCBI such as GenBank, PubMed, LocusLink and the Human Genome Project data. The complete contents of dbSNP are available to the public at website: http://www.ncbi.nlm.nih.gov/SNP . Submitted SNPs can also be downloaded via anonymous FTP at ftp://ncbi. nlm.nih.gov/snp/ }, 
+URL = {http://nar.oxfordjournals.org/content/28/1/352.abstract}, 
+eprint = {http://nar.oxfordjournals.org/content/28/1/352.full.pdf+html}, 
+journal = {Nucleic Acids Research} 
+}
+
+@article{annovar,
+author = {Wang, Kai and Li, Mingyao and Hakonarson, Hakon}, 
+title = {ANNOVAR: functional annotation of genetic variants from high-throughput sequencing data},
+volume = {38}, 
+number = {16}, 
+pages = {e164}, 
+year = {2010}, 
+doi = {10.1093/nar/gkq603}, 
+abstract ={High-throughput sequencing platforms are generating massive amounts of genetic variation data for diverse genomes, but it remains a challenge to pinpoint a small subset of functionally important variants. To fill these unmet needs, we developed the ANNOVAR tool to annotate single nucleotide variants (SNVs) and insertions/deletions, such as examining their functional consequence on genes, inferring cytogenetic bands, reporting functional importance scores, finding variants in conserved regions, or identifying variants reported in the 1000 Genomes Project and dbSNP. ANNOVAR can utilize annotation databases from the UCSC Genome Browser or any annotation data set conforming to Generic Feature Format version 3 (GFF3). We also illustrate a ‘variants reduction’ protocol on 4.7 million SNVs and indels from a human genome, including two causal mutations for Miller syndrome, a rare recessive disease. Through a stepwise procedure, we excluded variants that are unlikely to be causal, and identified 20 candidate genes including the causal gene. Using a desktop computer, ANNOVAR requires ∼4 min to perform gene-based annotation and ∼15 min to perform variants reduction on 4.7 million variants, making it practical to handle hundreds of human genomes in a day. ANNOVAR is freely available at http://www.openbioinformatics.org/annovar/.}, 
+URL = {http://nar.oxfordjournals.org/content/38/16/e164.abstract}, 
+eprint = {http://nar.oxfordjournals.org/content/38/16/e164.full.pdf+html}, 
+journal = {Nucleic Acids Research} 
+}
+
+@article{edger,
+author = {Robinson, Mark D. and McCarthy, Davis J. and Smyth, Gordon K.}, 
+title = {edgeR: a Bioconductor package for differential expression analysis of digital gene expression data},
+volume = {26}, 
+number = {1}, 
+pages = {139-140}, 
+year = {2010}, 
+doi = {10.1093/bioinformatics/btp616}, 
+abstract ={Summary: It is expected that emerging digital gene expression (DGE) technologies will overtake microarray technologies in the near future for many functional genomics applications. One of the fundamental data analysis tasks, especially for gene expression studies, involves determining whether there is evidence that counts for a transcript or exon are significantly different across experimental conditions. edgeR is a Bioconductor software package for examining differential expression of replicated count data. An overdispersed Poisson model is used to account for both biological and technical variability. Empirical Bayes methods are used to moderate the degree of overdispersion across transcripts, improving the reliability of inference. The methodology can be used even with the most minimal levels of replication, provided at least one phenotype or experimental condition is replicated. The software may have other applications beyond sequencing data, such as proteome peptide count data.Availability: The package is freely available under the LGPL licence from the Bioconductor web site (http://bioconductor.org).Contact: mrobinson@wehi.edu.au}, 
+URL = {http://bioinformatics.oxfordjournals.org/content/26/1/139.abstract}, 
+eprint = {http://bioinformatics.oxfordjournals.org/content/26/1/139.full.pdf+html}, 
+journal = {Bioinformatics} 
+}
+
+@article{kannan,
+author = {Kannan, Kalpana and Wang, Liguo and Wang, Jianghua and Ittmann, Michael M. and Li, Wei and Yen, Laising}, 
+title = {Recurrent chimeric RNAs enriched in human prostate cancer identified by deep sequencing},
+volume = {108}, 
+number = {22}, 
+pages = {9172-9177}, 
+year = {2011}, 
+doi = {10.1073/pnas.1100489108}, 
+abstract ={Transcription-induced chimeric RNAs, possessing sequences from different genes, are expected to increase the proteomic diversity through chimeric proteins or altered regulation. Despite their importance, few studies have focused on chimeric RNAs especially regarding their presence/roles in human cancers. By deep sequencing the transcriptome of 20 human prostate cancer and 10 matched benign prostate tissues, we obtained 1.3 billion sequence reads, which led to the identification of 2,369 chimeric RNA candidates. Chimeric RNAs occurred in significantly higher frequency in cancer than in matched benign samples. Experimental investigation of a selected 46 set led to the confirmation of 32 chimeric RNAs, of which 27 were highly recurrent and previously undescribed in prostate cancer. Importantly, a subset of these chimeras was present in prostate cancer cell lines, but not detectable in primary human prostate epithelium cells, implying their associations with cancer. These chimeras contain discernable 5′ and 3′ splice sites at the RNA junction, indicating that their formation is mediated by splicing. Their presence is also largely independent of the expression of parental genes, suggesting that other factors are involved in their production and regulation. One chimera, TMEM79-SMG5, is highly differentially expressed in human cancer samples and therefore a potential biomarker. The prevalence of chimeric RNAs may allow the limited number of human genes to encode a substantially larger number of RNAs and proteins, forming an additional layer of cellular complexity. Together, our results suggest that chimeric RNAs are widespread, and increased chimeric RNA events could represent a unique class of molecular alteration in cancer.}, 
+URL = {http://www.pnas.org/content/108/22/9172.abstract}, 
+eprint = {http://www.pnas.org/content/108/22/9172.full.pdf+html}, 
+journal = {Proceedings of the National Academy of Sciences} 
+}
+
+@article{featurecounts,
+author = {Liao, Yang and Smyth, Gordon K and Shi, Wei}, 
+title = {featureCounts: an efficient general-purpose program for assigning sequence reads to genomic features},
+year = {2013}, 
+doi = {10.1093/bioinformatics/btt656}, 
+abstract ={Motivation: Next-generation sequencing technologies generate millions of short sequence reads, which are usually aligned to a reference genome. In many applications, the key information required for downstream analysis is the number of reads mapping to each genomic feature, for example to each exon or each gene. The process of counting reads is called read summarization. Read summarization is required for a great variety of genomic analyses but has so far received relatively little attention in the literature.Results: We present featureCounts, a read summarization program suitable for counting reads generated from either RNA or genomic DNA sequencing experiments. featureCounts implements highly efficient chromosome hashing and feature blocking techniques. It is considerably faster than existing methods (by an order of magnitude for gene-level summarization) and requires far less computer memory. It works with either single or paired-end reads and provides a wide range of options appropriate for different sequencing applications.Availability: featureCounts is available under GNU General Public
+License as part of the Subread (http://subread.sourceforge.net) or Rsubread (http://www.bioconductor.org) software
+packages.Contact: shi@wehi.edu.au}, 
+URL = {http://bioinformatics.oxfordjournals.org/content/early/2013/11/13/bioinformatics.btt656.abstract}, 
+eprint = {http://bioinformatics.oxfordjournals.org/content/early/2013/11/13/bioinformatics.btt656.full.pdf+html}, 
+journal = {Bioinformatics} 
+}
+
+@article{mcf7_indels,
+AUTHOR = {Adomas, Aleksandra and Grimm, Sara and Malone, Christine and Takaku, Motoki and Sims, Jennifer and Wade, Paul},
+TITLE = {Breast tumor specific mutation in GATA3 affects physiological mechanisms regulating transcription factor turnover},
+JOURNAL = {BMC Cancer},
+VOLUME = {14},
+YEAR = {2014},
+NUMBER = {1},
+PAGES = {278},
+URL = {http://www.biomedcentral.com/1471-2407/14/278},
+DOI = {10.1186/1471-2407-14-278},
+PubMedID = {24758297},
+ISSN = {1471-2407},
+ABSTRACT = {BACKGROUND:The transcription factor GATA3 is a favorable prognostic indicator in estrogen receptor-alpha (ERalpha)-positive breast tumors in which it participates with ERalpha and FOXA1 in a complex transcriptional regulatory program driving tumor growth. GATA3 mutations are frequent in breast cancer and have been classified as driver mutations. To elucidate the contribution(s) of GATA3 alterations to cancer, we studied two breast cancer cell lines, MCF7, which carries a heterozygous frameshift mutation in the second zinc finger of GATA3, and T47D, wild-type at this locus.METHODS:Immunofluorescence staining and subcellular fractionation were employed to verify cellular localization of GATA3 in T47D and MCF7 cells. To test protein stability, cells were treated with translation inhibitor, cycloheximide or proteasome inhibitor, MG132, and GATA3 abundance was measured over time using immunoblot. GATA3 turn-over in response to hormone was determined by treating the cells with estradiol or ERalpha agonist, ICI 182,780. DNA binding ability of recombinant GATA3 was evaluated using electrophoretic mobility shift assay and heparin chromatography. Genomic location of GATA3 in MCF7 and T47D cells was assessed by chromatin immunoprecipitation coupled with next-generation sequencing (ChIP-seq).RESULTS:GATA3 localized in the nucleus in T47D and MCF7 cells, regardless of the mutation status. The truncated protein in MCF7 had impaired interaction with chromatin and was easily released from the nucleus. Recombinant mutant GATA3 was able to bind DNA to a lesser degree than the wild-type protein. Heterozygosity for the truncating mutation conferred protection from regulated turnover of GATA3, ERalpha and FOXA1 following estrogen stimulation in MCF7 cells. Thus, mutant GATA3 uncoupled protein-level regulation of master regulatory transcription factors from hormone action. Consistent with increased protein stability, ChIP-seq profiling identified greater genome-wide accumulation of GATA3 in MCF7 cells bearing the mutation, albeit with a similar distribution across the genome, comparing to T47D cells.CONCLUSIONS:We propose that this specific, cancer-derived mutation in GATA3 deregulates physiologic protein turnover, stabilizes GATA3 binding across the genome and modulates the response of breast cancer cells to estrogen signaling.},
+}
