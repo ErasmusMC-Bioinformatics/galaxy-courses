@@ -6,12 +6,16 @@ BIB = bibtex
 
 .PHONY: all
 
-all: Galaxy_RNA-Seq_DGE_presentation.pdf
+all: Galaxy_RNA-Seq_DGE_manual.pdf Galaxy_RNA-Seq_DGE_presentation.pdf
 
-#all: Galaxy_RNA-Seq_DGE_manual.pdf Galaxy_RNA-Seq_DGE_presentation.pdf
 
-#Galaxy_RNA-Seq_DGE_manual.pdf : Galaxy_RNA-Seq_DGE_manual.tex
-#	$(TEX) Galaxy_RNA-Seq_DGE_manual.tex
+
+
+
+Galaxy_RNA-Seq_DGE_manual.pdf : Galaxy_RNA-Seq_DGE_manual.tex
+	$(TEX) Galaxy_RNA-Seq_DGE_manual.tex
+
+
 
 
 
