@@ -1,0 +1,14 @@
+\section{RNA-Seq: alignment}
+\begin{itemize}
+	\item On how many individuals is hg19 based?
+	\item[$\rightarrow$] ``For example GRCh37, the Genome Reference Consortium human genome (build 37) is derived from \textbf{thirteen anonymous volunteers} from Buffalo, New York.'' - because of this small number you should realize that the reference genome is far from perfect
+	\item[$$]
+	\item How many reads are multi-mapping (`secondary')?
+	\item[$\rightarrow$] 858 reads in \textit{miR-23b.bam} are secondary. If your number is different you might have used different trimming settings, different alignment settings or different tool versions.
+	\item[$$]
+	\item Can you see where the introns and exons are located?
+	\item[$\rightarrow$] Gaps that appear as blocks, like the one between \verb|chr16:15715762-15716795|, are splice junctions
+	\item[$$]
+	\item Can you go to \verb|chr15:60688011-60688099|, and explain what is going on there?
+	\item[$\rightarrow$] There is a number of mismatches at chr15:60688051, the \verb|C| is substituted with a \verb|G|. This is a single nucleotide variant (SNV).
+\end{itemize}

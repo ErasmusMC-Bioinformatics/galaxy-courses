@@ -1,0 +1,60 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage{hyperref}
+\bibliographystyle{plainnat}
+\usepackage{setspace}
+
+\input{../configure.tex}% Configurations should be changed in this file
+
+\begin{document}
+\title{ \textit{\institute}\text{ }Galaxy Training: RNA-Seq DGE analysis \\
+{ \large Answer sheet}}
+
+\author{ \authors }
+\maketitle
+
+%\newpage
+%\tableofcontents
+%\newpage
+
+%\doublespacing
+
+\section*{Introduction}
+Due to the rapid development of Galaxy, screenshots and results may be out of date. If you experience something like this, please report it as a bug at \url{https://github.com/ErasmusMC-Bioinformatics/galaxy-courses/issues}.
+
+% Module QC/QA:
+\input{Galaxy_RNA-Seq_DGE_answers_Module_QC.tex}
+
+% Module alignment:
+\input{Galaxy_RNA-Seq_DGE_answers_Module_alignment.tex}
+
+
+\tuxedofalse
+\iftuxedo
+	% Module tuxedo:
+	\input{Galaxy_RNA-Seq_DGE_answers_Module_tuxedo.tex}
+\else
+	% Module advanced:
+	\input{Galaxy_RNA-Seq_DGE_answers_Module_advanced.tex}
+\fi
+
+
+
+
+%\bibliographystyle{natbib}
+%\bibliographystyle{plainnat}
+
+%\newpage
+
+\vspace{-1.5em}
+\bibliography{references}
+
+\end{document}

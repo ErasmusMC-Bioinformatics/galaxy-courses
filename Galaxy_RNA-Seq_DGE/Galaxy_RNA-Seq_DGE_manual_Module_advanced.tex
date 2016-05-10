@@ -23,8 +23,8 @@ To filter a tabular file we proceed with the following Galaxy tool:
 \textit{\underline{Filter} data on any column using simple expressions}:\\
 \includegraphics[width=\textwidth]{figures/expression_02.png}\\
 \begin{itemize}
-	\item How many reads are aligned to ANXA2?
-	\item What gene has the highest read count (tip: use \textit{sort})?
+	\item How many reads are aligned to DRAM1?
+	\item Which gene has the highest read count (tip: use \textit{sort})?
 \end{itemize}
 
 \subsection{Expression analysis: Low sequencing depth}
@@ -162,6 +162,7 @@ This will create a truncated version of the expression matrix, only including th
 	\item [$\square$] Re-run the previous edgeR DGE job with the rerun icon, make sure that the design matrix is \textit{GSE51403\_design\_matrix\_\underline{subsampled}.txt}
 	\item [$\square$] Replace \textbf{Expression (read count) matrix}: \textit{GSE51403\_expression\_matrix\_\underline{full}.txt}\\ with \textit{GSE51403\_expression\_matrix\_\underline{full\_5+5\_replicates}.txt}
 	\item [$\square$] \textbf{Enable} the optional output: \textit{MDS-plot (logFC-method)}
+	\item [$\square$] Set the \textbf{Output format of images} to: \textit{Portable document format (.pdf)}
 	\item How many genes are significant differentially expressed between Control and E2?
 	\begin{itemize}
 		\item[$\square$] Please fill this in into Table \ref{tab:dge_ad_01}.

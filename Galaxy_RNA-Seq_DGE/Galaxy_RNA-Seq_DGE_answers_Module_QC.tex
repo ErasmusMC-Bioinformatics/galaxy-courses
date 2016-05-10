@@ -1,0 +1,21 @@
+\section{RNA-Seq: QC/QA}
+
+\subsection{Fastq, Fastqsanger and FastQC}
+
+\begin{itemize}
+	\item What would singletons be?
+	\item[$\rightarrow$] Singletons are paired end reads of which one of the pairs is entirely removed because of the poor quality.
+	\item[$$]
+	\item Has the \textit{Per base sequence quality} improved?
+	\item[$\rightarrow$] Yes, there are barely bases that are orange or red. There are still a few poor quality bases, because Sickle trims using windows.
+	\item Have the \textit{Per sequence quality scores} improved?
+	\item[$\rightarrow$] Yes, the minimal average read quality is 31.
+	\item Why has the \textit{sequence length distribution} changed?
+	\item[$\rightarrow$] Yes, the reads now differ in size because of the clipping by sickle where they used to be all of the same size.
+	\item[$$]
+	\item Could you think of a reason why sequences could be overrepresented in RNA-Seq data?
+	\item[$\rightarrow$] For this particular dataset the reason why we have overrepresented sequences is because of the small dataset size.
+	However, overrepresented sequences will appear in normal datasets.
+	It is possible they are there for technical reasons, like adapters or spike-ins, but most often they are sequences from the most abundant transcript(s).
+	In DNA-seq you would however expect reads to be more or less uniform distributed over the genome and if you then observe overrepresented sequences, they indicate that that some artefact, but for RNA-Seq overrepresented sequences are often biologically sound.
+\end{itemize}

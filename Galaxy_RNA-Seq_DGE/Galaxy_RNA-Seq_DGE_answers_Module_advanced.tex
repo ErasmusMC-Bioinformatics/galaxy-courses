@@ -1,0 +1,120 @@
+\section{Expression analysis advanced}
+\subsection{Estimating gene expression}
+\begin{itemize}
+	\item How many reads are \textit{Assigned}?
+	\item[$\rightarrow$] 15522 reads
+	\item How many reads are \textit{UnAssigned (sum of all)}?
+	\item[$\rightarrow$] $34+1661+2276=3971$ reads
+	\item[$$]
+	\item How many reads are aligned to DRAM1?
+	\item[$\rightarrow$] 1116 reads
+	\item Which gene has the highest read count (tip: use \textit{sort})?
+	\item[$\rightarrow$] \textit{ANXA2}
+\end{itemize}
+
+\subsection{Expression analysis: Low sequencing depth}
+
+\begin{table}[]
+\centering
+\caption{results of DGE analysis}
+\label{tab:dge_ad_01}
+\begin{tabular}{ | l | l | r | }
+\hline
+Replicates & Seq. Depth & Significant DE genes \\
+\hline
+0          & 0          & 0\quad\quad \\
+7rep\_5M   & 5,000,000  & \verb|.......| ? \\
+7rep\_10M  & 10,000,000 & \verb|.......| ? \\
+7rep\_30M  & 30,000,000 & \verb|.......| ? \\
+5rep\_30M  & 30,000,000 & \verb|.......| ? \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+	\item Given that the first column lists the names of the samples and the second column the samples' corresponding condition, how many conditions does the experiment have?
+	\item[$\rightarrow$] Three conditions, namely: \textit{Control}, \textit{Unknown} and \textit{E2}.
+\end{itemize}
+
+\subsubsection{Subsampled datasets: 5M, 7+7}
+\begin{itemize}
+	\item The gene is said to be estrogen-responsive. The E2 hormone is an estrogen.
+	\item[$\rightarrow$] \textit{ANXA2}
+	\item[$$]
+	\item Can you find on the gene cards page an association with MCF-7 cells?
+	\item[$\rightarrow$] The website says that GREB1 is associated with breast cancer, of which the MCF-7 cell line is taken.
+	\item[$$]
+	\item How many genes are significant differentially expressed between Control and E2?
+	\item[$\rightarrow$] \begin{tabular}{ | l | l | r | }
+	\hline
+	Replicates & Seq. Depth & Significant DE genes \\
+	\hline
+	0          & 0          & 0\quad\quad \\
+	7rep\_5M   & 5,000,000  & 3287\quad\quad \\
+	7rep\_10M  & 10,000,000 & \verb|.......| ? \\
+	7rep\_30M  & 30,000,000 & \verb|.......| ? \\
+	5rep\_30M  & 30,000,000 & \verb|.......| ? \\
+	\hline
+	\end{tabular}
+\end{itemize}
+
+\subsubsection{Subsampled datasets: 10M, 7+7}
+\begin{itemize}
+	\item How many genes are significant differentially expressed between Control and E2? Is this more or less than when we used 5M reads?
+	\item[$\rightarrow$] \begin{tabular}{ | l | l | r | }
+	\hline
+	Replicates & Seq. Depth & Significant DE genes \\
+	\hline
+	0          & 0          & 0\quad\quad \\
+	7rep\_5M   & 5,000,000  & 3287\quad\quad \\
+	7rep\_10M  & 10,000,000 & 3682\quad\quad \\
+	7rep\_30M  & 30,000,000 & \verb|.......| ? \\
+	5rep\_30M  & 30,000,000 & \verb|.......| ? \\
+	\hline
+	\end{tabular}
+\end{itemize}
+
+\subsubsection{Subsampled datasets: 30M, 7+7}
+\begin{itemize}
+	\item How many genes are significant differentially expressed between Control and E2?
+	\item[$\rightarrow$] \begin{tabular}{ | l | l | r | }
+	\hline
+	Replicates & Seq. Depth & Significant DE genes \\
+	\hline
+	0          & 0          & 0\quad\quad \\
+	7rep\_5M   & 5,000,000  & 3287\quad\quad \\
+	7rep\_10M  & 10,000,000 & 3682\quad\quad \\
+	7rep\_30M  & 30,000,000 & 4717\quad\quad \\
+	5rep\_30M  & 30,000,000 & \verb|.......| ? \\
+	\hline
+	\end{tabular}
+\end{itemize}
+
+\subsubsection{Subsampled datasets: 30M, 5+5}
+\begin{itemize}
+	\item How many genes are significant differentially expressed between Control and E2?
+	\item[$\rightarrow$] \begin{tabular}{ | l | l | r | }
+	\hline
+	Replicates & Seq. Depth & Significant DE genes \\
+	\hline
+	0          & 0          & 0\quad\quad \\
+	7rep\_5M   & 5,000,000  & 3287\quad\quad \\
+	7rep\_10M  & 10,000,000 & 3682\quad\quad \\
+	7rep\_30M  & 30,000,000 & 4717\quad\quad \\
+	5rep\_30M  & 30,000,000 & 3078\quad\quad \\
+	\hline
+	\end{tabular}
+	\item[$$]
+	\item Do you see separation between the samples from E2 and Control?
+	\item[$\rightarrow$] The samples from each condition are clearly closer to each other and the classes are indeed separated.
+	\item Could you think of an application where it would be desired to see separation between classes?
+	\item[$\rightarrow$] You could classify based on the expression profiles.
+	\item Would you expect more or less differentially expressed genes if the experiment was done on individual patient samples instead of cell-line replicates?
+	\item[$\rightarrow$] There will be less differentially expressed genes if the experiment was conducted on individual patients because each patient has its own person specific expression profile (genetic) as well as that each patient lives under different environmental conditions whereas the cell lines have the same environment conditions and the same genome.
+\end{itemize}
+
+\subsection{Bonus question}
+\begin{itemize}
+	\item To which classes do the \textit{Unknown} samples (subsampled design and expression matrix) belong? (hint: MDS)
+	\item[$\rightarrow$] This one you need to do on your own...
+\end{itemize}
