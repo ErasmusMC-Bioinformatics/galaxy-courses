@@ -7,9 +7,10 @@
 \usepackage[margin=0.85in]{geometry}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{cite}
 \usepackage{natbib}
 \usepackage{hyperref}
-\bibliographystyle{plainnat}
+%\bibliographystyle{plainnat}
 \usepackage{setspace}
 
 \input{../configure.tex}% Configurations should be changed in this file
@@ -48,15 +49,12 @@ Due to the rapid development of Galaxy, screenshots and results may be out of da
 	\input{Galaxy_RNA-Seq_DGE_manual_Module_advanced.tex}
 \fi
 
-
-
-
-%\bibliographystyle{natbib}
-%\bibliographystyle{plainnat}
-
-%\newpage
+\newpage
 
 \vspace{-1.5em}
-\bibliography{references}
+\newpage
+\bibliographystyle{plainnat}
+%\bibliographystyle{plain}
+\bibliography{references}{}
 
 \end{document}

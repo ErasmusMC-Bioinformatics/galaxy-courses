@@ -12,18 +12,28 @@ all: Galaxy_RNA-Seq_DGE_manual.pdf Galaxy_RNA-Seq_DGE_answers.pdf Galaxy_RNA-Seq
 
 
 
-Galaxy_RNA-Seq_DGE_manual.pdf : Galaxy_RNA-Seq_DGE_manual.tex
+
+Galaxy_RNA-Seq_DGE_manual.pdf : Galaxy_RNA-Seq_DGE_manual.tex Galaxy_RNA-Seq_DGE_manual.bbl Galaxy_RNA-Seq_DGE_manual.blg
+	$(TEX) Galaxy_RNA-Seq_DGE_manual.tex ; $(TEX) Galaxy_RNA-Seq_DGE_manual.tex
+
+Galaxy_RNA-Seq_DGE_manual.bbl Galaxy_RNA-Seq_DGE_manual.blg : references.bib Galaxy_RNA-Seq_DGE_manual.aux
+	$(BIB) Galaxy_RNA-Seq_DGE_manual
+
+Galaxy_RNA-Seq_DGE_manual.aux : Galaxy_RNA-Seq_DGE_manual.tex
 	$(TEX) Galaxy_RNA-Seq_DGE_manual.tex
 
+
+
+
 Galaxy_RNA-Seq_DGE_answers.pdf : Galaxy_RNA-Seq_DGE_answers.tex
-	$(TEX) Galaxy_RNA-Seq_DGE_answers.tex
+	$(TEX) Galaxy_RNA-Seq_DGE_answers.tex ; $(TEX) Galaxy_RNA-Seq_DGE_answers.tex
 
 
 
 
 
 Galaxy_RNA-Seq_DGE_presentation.pdf : Galaxy_RNA-Seq_DGE_presentation.tex Galaxy_RNA-Seq_DGE_presentation.bbl Galaxy_RNA-Seq_DGE_presentation.blg
-	$(TEX) Galaxy_RNA-Seq_DGE_presentation.tex
+	$(TEX) Galaxy_RNA-Seq_DGE_presentation.tex ; $(TEX) Galaxy_RNA-Seq_DGE_presentation.tex
 
 Galaxy_RNA-Seq_DGE_presentation.bbl Galaxy_RNA-Seq_DGE_presentation.blg : references.bib Galaxy_RNA-Seq_DGE_presentation.aux
 	$(BIB) Galaxy_RNA-Seq_DGE_presentation

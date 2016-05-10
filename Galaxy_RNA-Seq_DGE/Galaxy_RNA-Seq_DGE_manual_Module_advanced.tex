@@ -1,6 +1,7 @@
 \section{Expression analysis advanced}
 \subsection{Estimating gene expression}
-For this practical we need a RNA-seq alignments we previously made in the basic expression analysis: ``\textit{... miR-23b.bam}''. If you did not do that practical, you can find it in the supplementary material: \\
+For this practical we need a RNA-seq alignments we previously made in the basic expression analysis: ``\textit{... miR-23b.bam}''.
+If you did not do that practical, you can find it in the supplementary material: \\
 \datalibrarydirrnaseqadvanced $\rightarrow$ \textit{miR-23b.bam (clean)}\\
 Ensure that the file is annotated at reference genome hg19. To estimate expression in RNA-Seq, we can count the number of reads that are aligned to each gene from the list of candidate genes. Therefore you also need to import:\\
 \datalibrarydirrnaseqadvanced $\rightarrow$ ucsc\_refseq.gtf\\
@@ -33,7 +34,7 @@ To say something about expression levels, we would like to say it in a context r
 Therefore, we need normalization and apply statistical testing.
 A popular R package that allows to do this is EdgeR, which in galaxy fits perfectly with featureCounts.
 
-In the following analyses you will determine the differentially expressed genes in the MCF-7-cell line between samples that have been treated with the hormone $\beta$-estradiol (E2) and those that were left as control.
+In the following analyses you will determine the differentially expressed genes in the MCF-7-cell line between samples that have been treated with the hormone $\beta$-estradiol (E2) and those that were left as control \citep{mcf7}.
 The data was originally used to benchmark the statistical power of adding replicates and does not reflect a certain disease state.
 In this exercise we will reproduce a part of their experiment to highlight the importance of replicates.
 However, it is a 2-class problem and has a similar setup as often used in cancer analysis.
