@@ -191,9 +191,9 @@
 		\end{itemize}
 		\item Trimmomatic and Sickle
 		\begin{itemize}
-			\item Remove linker/adapter sequences.
-			\item Trim low quality reads at the end of the read.
-			\item Evaluate the part of the read that is left.
+			\item Remove linker/adapter sequences
+			\item Trim low quality reads at the ends
+			\item Evaluate the part of the read that remains
 		\end{itemize}
 	\end{itemize}
 	\end{column}
@@ -253,7 +253,7 @@ files
 
 \begin{frame}
 \frametitle{Alignment tools}
-\framesubtitle{Current top aligners}
+\framesubtitle{Currently most used}
 	\begin{itemize}
 		\item RNA-STAR\cite{star}
 		\item HISAT2\cite{hisat}
@@ -265,6 +265,7 @@ files
 \begin{frame}
 	\frametitle{Differential gene expression}
 	\framesubtitle{}
+	\includegraphics[width=0.35\textwidth]{figures/diff_expr.jpg}\\
 	\begin{itemize}
 		\item Triggered by
 		\begin{itemize}
@@ -325,7 +326,7 @@ files
 \begin{frame}
 \frametitle{Generic RNA-Seq workflow}
 	\begin{center}
-		\includegraphics[width=\textwidth]{figures/dge_08p.pdf}
+		%\includegraphics[width=\textwidth]{figures/dge_08p.pdf}
 	\end{center}
 \end{frame}
 
@@ -350,7 +351,7 @@ files
 	\end{itemize}
 	
 	\begin{figure}
-		\includegraphics[width=0.5\textwidth]{figures/dge_09p.pdf}
+		%\includegraphics[width=0.5\textwidth]{figures/dge_09p.pdf}
 	\end{figure}
 	\begin{itemize}
 		\item Tools: featureCounts, HTSeq-count \cite{featurecounts,htseq}
@@ -362,7 +363,7 @@ files
 
 \begin{frame}
 	\frametitle{Differential gene expression analysis}
-	\framesubtitle{edgeR}
+	\framesubtitle{edgeR and DESeq2}
 	\begin{itemize}
 			\item edgeR or DESeq2\cite{edger,deseq2}
 		\begin{itemize}
@@ -380,10 +381,25 @@ files
 \end{frame}
 
 \begin{frame}
+	\frametitle{Differential gene expression analysis - normalization}
+	\framesubtitle{edgeR and DESeq2}
+	\begin{itemize}
+		\item Tests correct for read depth
+		\item Tests correct for (over-)dispersion (biological variation)
+		\begin{itemize}
+			\item Related to read count per gene - highly expressed genes have lower variation
+			\begin{itemize}
+				\item Related to gene length
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
 \frametitle{Differential gene expression analysis}
 \framesubtitle{Read counts: negative binomial distributed}
 	\begin{figure}
-	\includegraphics[width=0.60\textwidth]{figures/dge_10ap.pdf}
+		%\includegraphics[width=0.60\textwidth]{figures/dge_10ap.pdf}
 	\end{figure}
 \end{frame}
 
@@ -391,26 +407,26 @@ files
 \frametitle{Differential gene expression analysis}
 \framesubtitle{Read counts: negative binomial distributed}
 	\begin{figure}
-	\includegraphics[width=0.60\textwidth]{figures/dge_10bp.pdf}
+		%\includegraphics[width=0.60\textwidth]{figures/dge_10bp.pdf}
 	\end{figure}
 \end{frame}
 
 
 \begin{frame}
 	\frametitle{Differential gene expression analysis}
-	\includegraphics[width=\textwidth]{figures/dge_11ap.pdf} \\
+		%\includegraphics[width=\textwidth]{figures/dge_11ap.pdf} \\
 	\textcolor{white}{C}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Differential gene expression analysis}
-	\includegraphics[width=\textwidth]{figures/dge_11bp.pdf} \\
+		%\includegraphics[width=\textwidth]{figures/dge_11bp.pdf} \\
 	\textcolor{white}{C}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Differential gene expression analysis}
-	\includegraphics[width=\textwidth]{figures/dge_11bp.pdf} \\
+		%\includegraphics[width=\textwidth]{figures/dge_11bp.pdf} \\
 	Contrast = tumor $\leftrightarrow$ normal
 \end{frame}
 
