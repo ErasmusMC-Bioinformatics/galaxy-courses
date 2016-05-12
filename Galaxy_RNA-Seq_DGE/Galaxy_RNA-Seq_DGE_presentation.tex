@@ -86,7 +86,7 @@
 		\item High throughput
 		\item Paired end
 		\item High accuracy
-		\item Read length 2$\times$150bp
+		\item Read length up to 2$\times$150bp
 		\item Relatively long run time
 		\item Relatively expensive
 	\end{itemize}
@@ -130,7 +130,7 @@
 	\begin{itemize}
 		\item Sequence is given per char
 		\begin{itemize}
-			\item N means \textit{sequencer doesn’t know}
+			\item N means \textit{sequencer doesn't know}
 		\end{itemize}
 		\item Quality is encoded as a char
 		\begin{itemize}
@@ -192,7 +192,8 @@
 		\item Trimmomatic and Sickle
 		\begin{itemize}
 			\item Remove linker/adapter sequences
-			\item Trim low quality reads at the ends
+			\item Trim low quality bases at the ends of the reads
+			\item Discard low quality reads
 			\item Evaluate the part of the read that remains
 		\end{itemize}
 	\end{itemize}
@@ -228,10 +229,19 @@ files
 
 \begin{frame}
 \frametitle{FastQC}
-\framesubtitle{Base adapter contamination}
+\framesubtitle{Adapter contamination}
 	\begin{center}
 		\includegraphics[height=0.75\textheight]{figures/dge_04p.png}
 	\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{FastQC}
+\framesubtitle{`Random' hexamer priming}
+	\begin{center}
+		\includegraphics[height=0.75\textheight]{figures/random_priming.png}
+	\end{center}
+	\cite{random_hexamer_priming}
 \end{frame}
 
 \begin{frame}
@@ -287,29 +297,29 @@ files
 	\end{center}
 \end{frame}
 
-\begin{frame}
-\frametitle{Tuxedo pipeline}
-\framesubtitle{TopHat, Cufflinks, CuffMerge, CuffDiff, CummeRbund}
-	\begin{itemize}
-		\item CuffLinks
-		\begin{itemize}
-			\item Estimate transcript abundance
-			\item Assemble transcripts (incl. novel)
-		\end{itemize}
-		\item CuffMerge
-		\begin{itemize}
-			\item Merge novel and known gene annotations
-		\end{itemize}
-		\item CuffDiff
-		\begin{itemize}
-			\item Test hypothesis, find diff. expressed genes/transcripts
-		\end{itemize}
-		\item CummeRbund
-		\begin{itemize}
-			\item Static visualizations
-		\end{itemize}
-	\end{itemize}
-\end{frame}
+%\begin{frame}
+%\frametitle{Tuxedo pipeline}
+%\framesubtitle{TopHat, Cufflinks, CuffMerge, CuffDiff, CummeRbund}
+	%\begin{itemize}
+		%\item CuffLinks
+		%\begin{itemize}
+			%\item Estimate transcript abundance
+			%\item Assemble transcripts (incl. novel)
+		%\end{itemize}
+		%\item CuffMerge
+		%\begin{itemize}
+			%\item Merge novel and known gene annotations
+		%\end{itemize}
+		%\item CuffDiff
+		%\begin{itemize}
+			%\item Test hypothesis, find diff. expressed genes/transcripts
+		%\end{itemize}
+		%\item CummeRbund
+		%\begin{itemize}
+			%\item Static visualizations
+		%\end{itemize}
+	%\end{itemize}
+%\end{frame}
 
 
 \section{Advanced (DGE) analysis}
@@ -319,14 +329,14 @@ files
 \framesubtitle{Limitations}
 	\begin{itemize}
 		\item ``Paired'' designs: tumor and normal from same patient, batch effects
-		\item Less control (e.g. use additional class-label for normalization but exclude it from the test)
+		\item Less control (e.g. use additional class for normalization but exclude it from the test)
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Generic RNA-Seq workflow}
 	\begin{center}
-		%\includegraphics[width=\textwidth]{figures/dge_08p.pdf}
+		\includegraphics[width=\textwidth]{figures/dge_08p.pdf}
 	\end{center}
 \end{frame}
 
@@ -351,7 +361,7 @@ files
 	\end{itemize}
 	
 	\begin{figure}
-		%\includegraphics[width=0.5\textwidth]{figures/dge_09p.pdf}
+		\includegraphics[width=0.5\textwidth]{figures/dge_09p.pdf}
 	\end{figure}
 	\begin{itemize}
 		\item Tools: featureCounts, HTSeq-count \cite{featurecounts,htseq}
@@ -370,7 +380,7 @@ files
 			\item Free R Packages
 		\item Galaxy wrapper does normalizations for you
 		\begin{itemize}
-			\item Use raw reads, do NOT use FPKM/RPKM!
+			\item Use raw read counts, do NOT use FPKM/RPKM or pre-normalized values!
 		\end{itemize}
 	\end{itemize}
 		\item ``Limma" for count data
@@ -384,10 +394,10 @@ files
 	\frametitle{Differential gene expression analysis - normalization}
 	\framesubtitle{edgeR and DESeq2}
 	\begin{itemize}
-		\item Tests correct for read depth
-		\item Tests correct for (over-)dispersion (biological variation)
+		\item Corrects for read depth
+		\item Corrects for (over-)dispersion (biological variation)
 		\begin{itemize}
-			\item Related to read count per gene - highly expressed genes have lower variation
+			\item Related to read depth per gene - highly expressed genes have lower variation
 			\begin{itemize}
 				\item Related to gene length
 			\end{itemize}
@@ -399,7 +409,7 @@ files
 \frametitle{Differential gene expression analysis}
 \framesubtitle{Read counts: negative binomial distributed}
 	\begin{figure}
-		%\includegraphics[width=0.60\textwidth]{figures/dge_10ap.pdf}
+		\includegraphics[width=0.60\textwidth]{figures/dge_10ap.pdf}
 	\end{figure}
 \end{frame}
 
@@ -407,26 +417,26 @@ files
 \frametitle{Differential gene expression analysis}
 \framesubtitle{Read counts: negative binomial distributed}
 	\begin{figure}
-		%\includegraphics[width=0.60\textwidth]{figures/dge_10bp.pdf}
+		\includegraphics[width=0.60\textwidth]{figures/dge_10bp.pdf}
 	\end{figure}
 \end{frame}
 
 
 \begin{frame}
 	\frametitle{Differential gene expression analysis}
-		%\includegraphics[width=\textwidth]{figures/dge_11ap.pdf} \\
+		\includegraphics[width=\textwidth]{figures/dge_11ap.pdf} \\
 	\textcolor{white}{C}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Differential gene expression analysis}
-		%\includegraphics[width=\textwidth]{figures/dge_11bp.pdf} \\
+		\includegraphics[width=\textwidth]{figures/dge_11bp.pdf} \\
 	\textcolor{white}{C}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Differential gene expression analysis}
-		%\includegraphics[width=\textwidth]{figures/dge_11bp.pdf} \\
+		\includegraphics[width=\textwidth]{figures/dge_11bp.pdf} \\
 	Contrast = tumor $\leftrightarrow$ normal
 \end{frame}
 
