@@ -259,7 +259,7 @@ Then click on the second input dataset and rename it to *Features*. This will ma
 
 
 #### Renaming outputs
-Finally let’s rename the workflow’s output. For this click on the last dataset (“Compare two Datasets”). Scroll down in the right pane, expand the “Add Actions” dialog and select “Rename Dataset”:
+Finally let’s rename the workflow’s output. For this click on the last step of the workflow (“Compare two Datasets”). Scroll down in the right pane, expand the “Configure Output: out_file1” dialog and select “Rename Dataset”:
 
 ![](images/101_34.png)
 
