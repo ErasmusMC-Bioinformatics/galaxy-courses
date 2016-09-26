@@ -1,17 +1,13 @@
-[courseserver]: https://bioinf-galaxian.erasmusmc.nl/galaxy/
-[trainingrepo]: https://github.com/ErasmusMC-Bioinformatics/galaxy-courses/issues
-[fastqcmanual]: https://bioinf-galaxian.erasmusmc.nl/public/GalaxyTraining/FastQC_Manual.pdf
-
 # RNA-Seq Differential Gene Expression
 
 This practical aims to familiarize you with the Galaxy RNA-Seq analysis, the FastQ format
 and data collections (pairs).
 
 ## Introduction
-Due to the rapid development of Galaxy, screenshots and results may be out of date. If you experience something like this, please report it as a bug at the [training materials github repo](trainingrepo).
+Due to the rapid development of Galaxy, screenshots and results may be out of date. If you experience something like this, please report it as a bug at the [training materials github repo](https://github.com/ErasmusMC-Bioinformatics/galaxy-courses/issues).
 
 ## Preparations
-**Open Galaxy** Please open a web browser and navigate to the [Galaxy server](courseserver) for this course.
+**Open Galaxy** Please open a web browser and navigate to the [Galaxy server](https://bioinf-galaxian.erasmusmc.nl/galaxy/) for this course.
 
 **Login or Register** for an account. In the top menu bar, go to `User` and then choose `Login` to log in with an existing account or click `Register` to create a new account. After registration, click on `Analyze data` in the top menu to return to the main screen.
 
@@ -46,7 +42,7 @@ similar to this:
 
 ![](figures/qc_04.png)
 
-More information about the FastQC output report can be found in this [manual](fastqcmanual).
+More information about the FastQC output report can be found in this [manual](https://bioinf-galaxian.erasmusmc.nl/public/GalaxyTraining/FastQC_Manual.pdf).
 
 The Galaxy history items are all of the **fastq** format. This format is a general format that covers four
 specific subformats that differ in their quality encoding. Before we proceed with the next step it is
