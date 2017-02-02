@@ -56,16 +56,14 @@ The more or less standard encoding is *fastqsanger*, which is the same encoding 
 
 ![](figures/qc_05.png)
 
-This will add the groomed fastqsanger files to your history, with names that are not convenient. Please rename the datasets such that you can keep track of the sample name (miR23b/control) and, if you did not use pairs, whether the reads are forward or reverse.
+This will add the groomed fastqsanger files to your history, with names that are not convenient. Please rename the datasets such that you can keep track of the sample name (e.g.: `control_1 (groomed)`, `control_2 (groomed)`, `miR-23b_1 (groomed)` and `miR-23b_2 (groomed)`) and, if you did not use pairs, whether the reads are forward or reverse.
 
-If we go back to the FastQC webpage report, and look in section *Per base sequence quality*, we
-see the average quality per base for all reads. The colors green, orange and red indicate whether
-the quality is considered good, okay, or bad. As you can see, the quality drops as the sequences get
-longer. It is important to realize that low quality bases will complicate alignment as well as SNP
-detection, because there will be more mismatches. To improve overall the base quality of the data,
-we would like to:
+If we go back to the FastQC webpage report, and look in section *Per base sequence quality*, we see the average quality per base for all reads. The colors green, orange and red indicate whether the quality is considered good, okay, or bad. As you can see, the quality drops as the sequences get longer. It is important to realize that low quality bases result more mismatches which do not reflect true genetic differences. This results in a higher amount of technical error and will therefore complicate alignment as well as SNP detection. To improve overall the base quality of the data, we would like to:
 
 - Trim the low quality bases from the ends
+
+![](figures/qc_08.png)
+
 - Remove reads of which the average quality is too low
 - Remove reads that are too short
 
@@ -94,12 +92,16 @@ If desired, you can hide the other results, such that you will get a history sim
 ![](figures/qc_07.png)
 
 As you can see, Sickle produces for every set of paired sequencing reads, a set of pairs and an extra
-file with *singletons*.
+file with *singletons*. Hence, for every two files that go in, three files come out.
 
 - **Question:** *What would singletons be?*
 
-To confirm that the base quality has improved, run the FastQC again on miR-23b (clean) , and
-take a look at it:
+To confirm that the base quality has improved, run the FastQC again on miR-23b (clean).
+In Galaxy you can visualize multiple datasets in one screen with the Scratchbook option.
+We are going to load the FastQC results before and after cleaning, in the same window, to see what has changed.
+Press the following icons:
+
+![](figures/qc_09.png)
 
 - Has the Per base sequence quality improved?
 - Have the Per sequence quality scores improved?
