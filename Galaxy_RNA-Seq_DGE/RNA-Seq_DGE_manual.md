@@ -26,7 +26,7 @@ Create a new history and import the following datasets from the shared data libr
 
 As you may expect from the file names, `_1` and `_2` indicate that these files are paired-end and belong together. To specify this in Galaxy, first select the checkbox at the top of the history (*Operations on multiple datasets*), and then select two history items that belong together and then press the button *For all selected...* to apply actions on multiple history items at once, and then select *Build Dataset Pair*. Galaxy does not inherently know which one is the forward and which one is the reverse, therefore make sure to check that `_1` is designated as the **forward** dataset and `_2` is the **reverse**. If Galaxy does not choose these files correctly be default, you can use the *Swap* option to switch these files around.
 
-Repeat this process for both dataset pairs. One of the samples has been treated with *miR-23b* and the other is a control. Make sure you use names for your pairs that make this clear. After you have done this, you will see that you end up with 6 datasets in total, of which 2 are dataset pairs. To avoid confusion you may find it easier to hide the individual history items, leaving just the two dataset pairs in the history.
+Repeat this process for both dataset pairs. One of the samples has been treated with *miR-23b* and the other is a control. Make sure you use names for your pairs that make this clear. After you have done this, you will see that you end up with 6 datasets in total, of which 2 are dataset pairs.
 
 ![](figures/qc_02.png)
 
@@ -46,12 +46,13 @@ More information about the FastQC output report can be found in this [manual](ht
 
 The Galaxy history items are all of the **fastq** format. This format is a general format that covers four
 specific subformats that differ in their quality encoding. Before we proceed with the next step it is
-important to understand the FASTQ encoding formats. They are described in detail on [wikipedia](http://en.wikipedia.org/wiki/FASTQ_format#Encoding)
+important to understand the FASTQ encoding formats. They are described in detail on [wikipedia](http://en.wikipedia.org/wiki/FASTQ_format#Encoding).
 
-In the FastQC report, scroll down to *Basic Statistics* and note what encoding is used in these files. This information is important because other tools may require a specific sub-datatype instead of *fastq*.
+In the FastQC report, scroll down to *Basic Statistics* and note what encoding is used in these files. This information is important later on in this practical, because other tools may require a specific sub-datatype instead of *fastq*. Therefore please write it down:
+..............................
 
-The more or less standard encoding is *fastqsanger*, which is the same encoding as Illumina 1.8 and
-Illumina 1.9, also referred to as Illumina 1.8+. To convert a fastq file into a different encoding (*fastqsanger* in our case), we use the tool `FASTQ Groomer - converts between various FASTQ quality formats`. In this tool, make sure the quality encoding you wrote down matches the one in the input field. Furthermore, make sure you run it for each of the four datasets; we can do this at once by selecting the *Multiple datasets* option in the input data field:
+The more or less standard encoding is *fastqsanger*, which is the same encoding as *Illumina 1.8* and
+*Illumina 1.9*, also referred to as *Illumina 1.8+*. To convert a fastq file into the standard type of encoding (*fastqsanger* in our case), we use the tool `FASTQ Groomer - converts between various FASTQ quality formats`. In this tool, make sure the quality encoding you wrote down matches the one in the input field. Furthermore, make sure you run it for each of the four datasets; we can do this at once by selecting the *Multiple datasets* option in the input data field.
 
 ![](figures/qc_05.png)
 
