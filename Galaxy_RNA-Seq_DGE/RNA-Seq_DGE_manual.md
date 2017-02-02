@@ -129,23 +129,16 @@ default, and run an alignment for miR-23b (clean) and control sample (clean).
 
 ![](figures/alignment_01.png)
 
-Please rename the output `RNA STAR on ...: starmapped.bam` to `RNA STAR on miR-23b: starmapped.bam`
-and `RNA STAR on control sample: starmapped.bam` or something else that makes it easy to rec-
-ognize. If the alignments do not have their database (also referred to as **dbkey**) set, change it to
-hg19 as follows:
+Please rename the output `RNA STAR on ...: starmapped.bam` to `RNA STAR on miR-23b: starmapped.bam` and `RNA STAR on control sample: starmapped.bam` or something else that makes it easy to recognize which is the control and which not. In the input settings we have selected *hg19* as reference genome. If everythin went well, this has been added as metadata to the history items too. If the alignments do not have their reference (referred to as **dbkey**)  properly set, change it to *hg19* as follows:
 
 ![](figures/alignment_02.png)
 
-To get some general alignment statistics, run the tool `Flagstat - tabulate descriptive stats for BAM
+To get some general statistics of the alignments that we're just produced, run the tool `Flagstat - tabulate descriptive stats for BAM
 datset` on miR-23b.
 
 - **Question:** *How many reads are multi-mapping (‘secondary’)?*
 
-Up until now we have only seen FASTQ and summary files. To get an idea of what has been measured
-during the experiment, we can visualize the alignment. So, in the alignment step we have been
-looking in hg19 where these sequences originate from, and this information is stored in the BAM files.
-Import from the Shared Data library  the file `ucsc refseq.gtf` into your history. Start the built-in
-visualization Trackster at one of the alignments (make sure the database is set to **hg19**):
+Up until now we have only seen FASTQ and summary files. To get an idea of what the alignment really looks like, we can visualize it interactively. So, in the alignment step, STAR has been looking in hg19 where these sequences originate from, and this information is stored in the BAM files. Import from the Shared Data library the file `ucsc refseq.gtf` into your history. Start the built-in visualization Trackster at one of the alignments (make sure the database is set to **hg19**) an create a **new visualization**:
 
 ![](figures/alignment_03.png)
 
@@ -208,7 +201,7 @@ The insert size is the size of the original cDNA fragment (minus the length of t
 
 The tool `Inner Distance` corrects for splice junctions in the alignments and makes a plot of the distribution of the insert sizes. When you take a look at the result, you will first need to understand the x-axis. If the length of the both mates of a read is 100bp, and the insert size in the figure is 0, the length of the RNA fragment was 100 + 0 + 100 = 200nt. If the insert size in the figure is 25 (mean) and both mates are 100bp in length, the RNA fragment was 100 + 25 + 100 = 225nt. Given that the mean of the insert size is ∼ 25bp, the most abundant fragment size is 225nt.
 
-Let’s assume the manufacturer said that the fragments are size selected between 200 and 500bp. You should be able to understand why there are insert sizes smaller than 0 (insert size smaller than 200) but also why they can be larger (technical and biological). There is also a small bulb of reads with an insert size even smaller than the fragment (200bp), meaning a negative fragment size. Of course, this is not possible. These are reads of which the forward mate is aligned after the reverse.
+Let’s assume the manufacturer said that the fragments are size selected between 200 and 500bp. You should be able to understand why there are insert sizes smaller than 0 (insert size smaller than 200) but also why they can be larger (technical and biological). There is also a small bulb of reads with an insert size even smaller than the fragment (200bp), meaning a negative fragment size.  These are reads of which the forward mate is aligned after the reverse.
 
 
 ### Advanced Expression Analysis
@@ -231,7 +224,7 @@ Before we proceed, we would like to know whether the analysis has been performed
 
 Flagstat told us the alignment has 18258 or 19493 reads in total (different versions). Please confirm whether this matches with the total number of reads in the featureCounts summary file.
 
-If we want to look at a particular gene, we may want to truncate the large table and only show the row with the gene of interest. To filter a tabular file we proceed with the following Galaxy tool: `Filter data - on any column using simple expressions`
+If we want to look at a particular gene, we may want to truncate the large table and only show the row with the gene of interest. To filter a tabular file we proceed with the following Galaxy tool: `Filter - data on any column using simple expressions`
 
 ![](figures/expression_02.png)
 
@@ -239,9 +232,9 @@ If we want to look at a particular gene, we may want to truncate the large table
 - **Question:** *Which gene has the highest read count (tip: use `sort`)?*
 
 #### Expression analysis: Low sequencing depth
-In the previous exercise we found which gene had the highest read count, but what does it mean if this gene has a high read count all samples? To say something about expression levels, we would like to say it in a context relative to other samples. Therefore, we need normalization and apply statistical testing. A popular R package that allows to do this is **EdgeR**, which in galaxy fits perfectly with featureCounts.
+In the previous exercise we found which gene had the highest read count, but what does it mean if this gene has a high read count in all samples? To say something about expression levels, we would like to say it in a context relative to other samples. Therefore, we need normalization and apply statistical testing. A popular R package that allows to do this is **EdgeR**, which we can combine in Galaxy with data from featureCounts.
 
-In the following analyses you will determine the differentially expressed genes in the MCF-7-cell line between samples that have been treated with the hormone β-estradiol (E2) and those that were left as control [Liu et al., 2014]. The data was originally used to benchmark the statistical power of adding replicates and does not reflect a certain disease state. In this exercise we will reproduce a part of their experiment to highlight the importance of replicates. However, it is a 2-class problem and has a similar setup as often used in cancer analysis.
+In the following analyses you will determine the differentially expressed genes in the MCF-7-cell line between samples that have been treated with the hormone β-estradiol (E2) and those that were left as control [Liu et al., 2014]. The data was originally used to benchmark the statistical power of adding replicates and does not reflect a certain disease state. In this exercise we will reproduce a part of their experiment to highlight the importance of replicates. Note that this analysis is a 2-class problem and this setup can be used for many kinds of studies.
 
 Before we proceed, please read the abstract of the following article: http://dx.doi.org/10.1093/bioinformatics/btt688
 
@@ -264,15 +257,15 @@ Import the following files from data library:
 - `GSE51403_design_matrix_subsampled.txt`
 
 The design matrix provides the mapping from the RNA-seq read counts per sample to the phenotype
-class each is associated with. Please take a look at file GSE51403_design_matrix_subsampled.txt
+class each is associated with. Please take a look at file *GSE51403_design_matrix_subsampled.txt*.
 
 - **Question:** *Given that the first column lists the names of the samples and the second column the samples’ corresponding condition, how many conditions does the experiment have?*
 
 ##### Subsampled datasets: 5M, 7+7
-For our experiment we have a 2-classes setup: a class treated with estradiol is called *E2*, and the other is called *Control*. Take one more look at the design matrix and see if you can find samples that belong to these classes. Go over the following steps to find the differentially expressed genes between *E2* and *Control* using 7 replicates per condition and 5 million reads per sample.
+For our experiment we have a 2-class setup: a class treated with estradiol is called *E2*, and the other is called *Control*. Take one more look at the design matrix and see if you can find samples that belong to these classes. Go over the following steps to find the differentially expressed genes between *E2* and *Control* using 7 replicates per condition and 5 million reads per sample.
 
-*NOTE: although the design matrix contains a class description for all samples, also with 10M, 25M reads and class “Unknown”, while the expression matrix contains only those for 5M reads, the edgeR wrapper will link the samples based on their sample name and proceed with those.*
-
+*NOTE: although the design matrix contains a class description for all samples, also with 10M, 25M reads and class “Unknown”, the expression matrix contains only those for 5M reads. The edgeR Galaxy tool will link the samples based on their sample name and proceed with only those that can be linked.*
+
 - Load the tool `edgeR: Differential Gene(Expression) Analysis RNA-Seq gene expression analysis using edgeR (R package)`
 - Choose **Analysis type:** Multigroup test and/or complex designs with e.g. blocking
 - Choose **Expression (read count) matrix:** GSE51403_expression_matrix_5M_coverage.txt
@@ -291,9 +284,9 @@ It is always important to check whether we did not make obvious mistakes. Take a
 - **Question:** *Can you find on the gene cards page a regulatory factor of the gene that relates to the E2 treatment? (Hint: what was E2 again?)*
 - **Questions:** *Can you find on the gene cards page an association with MCF-7 cells? (Hint: what is MCF-7 for type of cell line?)*
 
-The answers to the questions should confirm that what we found with the expression analysis is in agreement with the biology behind it. If we go back to the output file, each line represents one gene, indicated by the gene symbol in the 2nd column. Because the table is ordered by FDR, the first column is the original position in the GTF file. The P-value, 6th column, is a probability that represents the chance to find the read counts that belong to the gene, given that they are from the same condition. The FDR is a multiple testing correction of the P-value and is usually used instead of the P-value. The lower this value, the less likely it is that the observed values are derived from the same condition. Thus, differentially expressed genes will have a low FDR and P-value for determining significance. To distinguish between differences considered to be caused by chance or by the different conditions, we make use of a cut-off, commonly set to ≤ 0.01 or ≤ 0.05.
+The answers to the questions should confirm that what we found with the expression analysis is in agreement with the biology behind it. If we go back to the output file, each line represents one gene, indicated by the gene symbol in the 2nd column. Because the table is ordered by FDR, the first column is the original position in the GTF file. The P-value, 6th column, is a probability that represents the chance to find the read counts that belong to the gene, given that they are from the same condition. The FDR is a multiple testing correction of the P-value and is usually used instead of the P-value. The lower this value, the less likely it is that the observed values are derived from the same condition. Thus, genes differentially expressed due to the conditions will have low FDR and P-values. To distinguish between differences considered to be caused by chance or by the different conditions, we make use of a cut-off, commonly set to ≤ 0.01 or ≤ 0.05, and classify genes with values lower than this threshold *significant*.
 
-In edgeR we already selected to only return those genes with a FDR ≤ 0.01. Hence, the number of lines in the history, minus 1 (header line) should give us the number of differentially expressed genes.
+In edgeR we already selected to only return those genes with a FDR ≤ 0.01. Hence, the number of lines in the history, (minus 1; the header line) is the number of differentially expressed genes.
 
 - **Question:** *How many genes are significant differentially expressed between Control and E2? (Please fill this in into the table above)*
 
@@ -351,9 +344,8 @@ You are finished!
 
 
 ### Bonus question
-In case you can’t get enough of it, go to the Shared Data bonus section and answer the following question:
 
-- **Question:** *To which classes do the Unknown samples belong? (hint: MDS)*
+In case you can't get enough of it, figure out to which classes do the *Unknown* samples in `GSE51403_design_matrix_subsampled.txt` belong? (hint: MDS)*
 
 ## References
 Yuwen Liu, Jie Zhou, and Kevin P. White. Rna-seq differential expression studies: more sequence
