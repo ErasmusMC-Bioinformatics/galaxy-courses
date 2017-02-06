@@ -20,7 +20,7 @@ sequencing data is usually provided in FASTQ format, which reports the sequenced
 #### Paired-end data as dataset pairs within Galaxy
 In Galaxy we can indicate that two datasets should be treated as forward and reverse data pairs in subsequent analysis steps. This section will show you how to create such dataset pairs.
 
-Create a new history and import the following datasets from the shared data library (`EMC Training - RNA-Seq DGE Analysis`) into your history:
+Create a new history and import the following datasets from the Shared Data library folder that corresponds to this practical (`EMC Training - RNA-Seq DGE Analysis`) into your history:
 
 ![](figures/qc_01.png)
 
@@ -98,7 +98,8 @@ file with *singletons*. Hence, for every two files that go in, three files come 
 
 To confirm that the base quality has improved, run the FastQC again on miR-23b (clean).
 In Galaxy you can visualize multiple datasets in one screen with the Scratchbook option.
-We are going to load the FastQC results before and after cleaning, in the same window, to see what has changed.
+We are going to load the FastQC results before and after cleaning), in the same window, to see what has changed.
+Try to avoid using singletons, but use the forwards instead.
 Press the following icons:
 
 ![](figures/qc_09.png)
@@ -138,7 +139,10 @@ datset` on miR-23b.
 
 - **Question:** *How many reads are multi-mapping (‘secondary’)?*
 
-Up until now we have only seen FASTQ and summary files. To get an idea of what the alignment really looks like, we can visualize it interactively. So, in the alignment step, STAR has been looking in hg19 where these sequences originate from, and this information is stored in the BAM files. Import from the Shared Data library the file `ucsc refseq.gtf` into your history. Start the built-in visualization Trackster at one of the alignments (make sure the database is set to **hg19**) an create a **new visualization**:
+Up until now we have only seen FASTQ and summary files. To get an idea of what the alignment really looks like, we can visualize it interactively.
+So, in the alignment step, STAR has been looking in hg19 where these sequences originate from, and this information is stored in the BAM files.
+Import from the Shared Data library folder that corresponds to this practical, the file `ucsc refseq.gtf` into your history.
+Start the built-in visualization Trackster at one of the alignments (make sure the database is set to **hg19**) an create a **new visualization**:
 
 ![](figures/alignment_03.png)
 
@@ -148,8 +152,10 @@ to visualize.
 
 ![](figures/alignment_04.png)
 
-When this job is done, and it contains no error messages in the bars, which should look like the
-figure below, save it:
+When this job is done, and it contains no error messages in the bars, which looks a bit like the
+figure below, save it.
+It will probably say that there is *no data to visualize*.
+This is correct because the dataset was deliberately truncated and has only data aligned to a few chromosomes (chr22, chr14, chr15 and chr16).
 
 ![](figures/alignment_05.png)
 
@@ -161,18 +167,20 @@ Now select the other alignment and press Add and save it again:
 
 ![](figures/alignment_07.png)
 
-Note that this is truncated data and you are supposed to see barely anything in here. Go to
-*chr16*, to region `chr16:15696870-15745667`.
+Note that this is truncated data and you are supposed to see barely anything in here.
+To find aligned reads, please go to region *chr16*, and browse to region `chr16:15696870-15745667`.
 
 - **Question:** *Can you see where the introns and exons are located?*
 
-To help you answer this question, you can add `ucsc refseq.gtf` that will visualize the exons and
-gene structure of a refseq gene annotation. It will only be visible if its database of the history item
-is set to hg19. Again, ensure this visualization is saved:
+To help you answer this question, you can add `ucsc refseq.gtf` that will visualize the exons and gene structure of a refseq gene annotation.
+*Note that in certain versions of Galaxy there is a bug that does not allow to load it within the visualization directly from the Shared Data library folder that corresponds to this practical.
+If you experience something like this, please copy the file to your history first.*
+The RefSeq database *will only be visible if its database of the history item is set to hg19*, double check this.
+Again, ensure this visualization is saved:
 
 ![](figures/alignment_08.png)
 
-- **Question:** *Can you go to* `chr15:60688011-60688099` *and explain what is going on there?*
+- **Question:** *Can you go to* `chr14:35,180,374-35,180,404` *and explain what is going on in the base in the center of the screen?*
 
 In the last question you can clearly see that you can observe biological facts from alignments where
 you couldn’t extract this from the plain fastq files. Because looking through all alignments ’by hand’
@@ -186,14 +194,14 @@ we did not look into because they can only be deduced from the alignments. There
 available to check for certain biases within alignments.
 
 #### CollectRnaSeqMetrics
-For this module, load the following files from the Shared Data Library: `paired-end-rna-seqmetrics.bam` and `ucsc refseq.gtf` and proceed with the tool `CollectRnaSeq-Metrics` as follows:
+For this module, load the following files from the Shared Data library folder that corresponds to this practical: `paired-end-rna-seqmetrics.bam` and `ucsc refseq.gtf` and proceed with the tool `CollectRnaSeq-Metrics` as follows:
 
 ![](figures/qc2_01.png)
 
 This analysis will take a while (couple minutes) and will return two files, a summary file and a PDF file. Take a look at the PDF. This pictures shows the average coverage per relative position within all genes. As you can see there is a bias towards the 5’ end. This means that overall more reads are aligned to the 5’ end of the genes, due to library preparation. For certain types of analysis (e.g. differential isoform expression analysis) it might be important to keep this information in mind.
 
 #### Inner Distance
-Import the following file from the Shared Data Library: `refseq-genes.bed` and proceed with the tool `Inner Distance` as follows:
+Import the following file from the  Shared Data library folder that corresponds to this practical: `refseq-genes.bed` and proceed with the tool `Inner Distance` as follows:
 
 ![](figures/qc2_02.png)
 
@@ -208,10 +216,10 @@ Let’s assume the manufacturer said that the fragments are size selected betwee
 
 #### Estimating gene expression
 For this practical we need a RNA-seq alignments we previously made in the basic expression anal
-ysis: `... miR-23b.bam`. If you do not have that file, you can find it in the Shared Data Library (`miR-23b.bam (clean)`)
+ysis: `... miR-23b.bam`. If you do not have that file, you can find it in the Shared Data library folder that corresponds to this practical (`miR-23b.bam (clean)`)
 
 Ensure that the file is annotated as reference genome hg19. To estimate expression in RNA-Seq,
-we can count the number of reads that are aligned to each gene from the list of candidate genes. Therefore you also need to import the following file from the shared data library: `ucsc refseq.gtf`
+we can count the number of reads that are aligned to each gene from the list of candidate genes. Therefore you also need to import the following file from the  Shared Data library folder that corresponds to this practical: `ucsc refseq.gtf`
 
 This list is provided as a GTF/GFF file. There are a variety of tools available for counting reads. `FeatureCounts` is one of the faster tools and it works directly using BAM files. Find this tool in the tool menu:
 
@@ -300,10 +308,11 @@ In the previous analysis, the original FASTQ files used to generate the read cou
 - **Question:** *How many genes are significant differentially expressed between Control and E2? Is this more or less than when we used 5M reads? (Please fill this in into the table)*
 
 ##### Subsampled datasets: 30M, 7+7
-In the previous analyses, the FASTQ files contained a total of 5.000.000 or 10.000.000 reads per sample. The full data set contains more or less 30.000.000 raw reads per sample. Import the following files from shared data:
+In the previous analyses, the FASTQ files contained a total of 5.000.000 or 10.000.000 reads per sample.
+The full data set contains more or less 30.000.000 raw reads per sample.
+Import the following files from this practicals' Shared Data:
 
 - GSE51403_expression_matrix_full.txt
-- GSE51403_expression_matrix_full_5x5.txt
 - GSE51403_design_matrix_full_depth.txt
 
 Proceed with the following steps:
@@ -314,17 +323,19 @@ Proceed with the following steps:
 - **Question:** How many genes are significant differentially expressed between Control and E2? (Please fill this in into the table)
 
 ##### Subsampled datasets: 30M, 5+5
-We did three tests with 7+7 replicates and different sequencing depths. To see what the effects are of sample replication, we should run the same analysis but use a different number of replicates. To modify expression matrices within Galaxy (both concatenating and removal) we can make use of the tool `edgeR: Concatenate Expression Matrices Create a full expression matrix`. We have used all our replicates in the previous analyses and so we can reduce the number of replicates to 5+5 by simply picking a subset:
+We did three tests with 7+7 replicates and different sequencing depths.
+To see what the effects are of sample replication, we should run the same analysis but use a different number of replicates.
+Please import from the pracitcals' Shared History folder:
 
-![](figures/expression_03.png)
+- GSE51403_expression_matrix_full_5x5.txt
 
-This will create a truncated version of the expression matrix, only including the desired 5+5 replicates.
+With this file Re-run the previous edgeR DGE job with the rerun icon, make sure that the design matrix is `GSE51403 design matrix subsampled.txt`:
 
-- For convenience, rename the new expression matrix to: `GSE51403_expression_matrix_full_5+5_replicates.txt`
-- Re-run the previous edgeR DGE job with the rerun icon, make sure that the design matrix is `GSE51403 design matrix subsampled.txt`
-- Replace **Expression (read count) matrix:** `GSE51403 expression matrix full.txt` with `GSE51403 expression matrix full 5+5 replicates.txt`
+- Replace **Expression (read count) matrix:** `GSE51403 expression matrix full.txt` with `GSE51403_expression_matrix_full_5x5.txt`
 - **Enable** the optional output: MDS-plot (logFC-method)
 - Set the **Output format of images** to: Portable document format (.pdf )
+
+![](figures/expression_03.png)
 
 - **Question:** *How many genes are significant differentially expressed between Control and E2? (Please fill this in into the table)*
 
